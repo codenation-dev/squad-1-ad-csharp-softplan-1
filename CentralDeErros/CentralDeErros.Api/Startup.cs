@@ -47,7 +47,8 @@ namespace CentralDeErros.Api
             services.AddGraphQL(o =>
             {
                 o.ExposeExceptions = true; // it can't be true in production
-            }).AddGraphTypes(ServiceLifetime.Scoped);
+            }).AddGraphTypes(ServiceLifetime.Scoped)
+            .AddUserContextBuilder(httpContext => httpContext.User);
 
             services.Configure<IISServerOptions>(options =>
             {
@@ -55,6 +56,8 @@ namespace CentralDeErros.Api
             });
 
             services.AddControllers();
+
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -64,6 +67,8 @@ namespace CentralDeErros.Api
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
 
             app.UseGraphQL<CentralDeErrosSchema>();
             app.UseGraphQLPlayground(new GraphQLPlaygroundOptions());

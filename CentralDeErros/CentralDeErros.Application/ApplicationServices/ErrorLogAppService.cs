@@ -5,6 +5,7 @@ using CentralDeErros.Domain.Interfaces;
 using CentralDeErros.Domain.Models;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace CentralDeErros.Application.ApplicationServices
 {
@@ -23,10 +24,10 @@ namespace CentralDeErros.Application.ApplicationServices
             return _mapper.Map<IList<ErrorLogViewModel>>(errorLogList);
         }
 
-        public ErrorLogViewModel Insert(ErrorLogViewModel errorLogViewModel)
+        async Task<ErrorLogViewModel> IErrorLogAppService.Insert(ErrorLogViewModel errorLogViewModel)
         {
             ErrorLog errorLog = _mapper.Map<ErrorLog>(errorLogViewModel);
-            return _mapper.Map<ErrorLogViewModel>(_errorLogService.Insert(errorLog));
+            return _mapper.Map<ErrorLogViewModel>(await _errorLogService.Insert(errorLog));
         }
     }
 }

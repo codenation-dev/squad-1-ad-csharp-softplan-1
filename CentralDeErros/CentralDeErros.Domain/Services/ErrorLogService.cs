@@ -2,6 +2,7 @@
 using CentralDeErros.Domain.Models;
 using MongoDB.Driver;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace CentralDeErros.Domain.Services
 {
@@ -17,13 +18,13 @@ namespace CentralDeErros.Domain.Services
             _errorLogs = database.GetCollection<ErrorLog>(settings.ErrorLogCollectionName);
         }
 
-        public ErrorLog Insert(ErrorLog errorLog)
-        {
-            _errorLogs.InsertOne(errorLog);
-            return errorLog;
-        }
-
         public IList<ErrorLog> Get() =>
             _errorLogs.Find(errorLog => true).ToList();
+
+        async Task<ErrorLog> IErrorLogService.Insert(ErrorLog errorLog)
+        {
+            await _errorLogs.InsertOneAsync(errorLog);
+            return errorLog;
+        }
     }
 }

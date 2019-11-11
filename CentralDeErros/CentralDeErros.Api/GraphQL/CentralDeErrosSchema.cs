@@ -8,6 +8,7 @@ namespace CentralDeErros.Api.GraphQL
         public CentralDeErrosSchema(IDependencyResolver resolver) : base(resolver)
         {
             Query = resolver.Resolve<CentralDeErrosQuery>();
+            Mutation = resolver.Resolve<CentralDeErrosMutation>();
         }
     }
 }
