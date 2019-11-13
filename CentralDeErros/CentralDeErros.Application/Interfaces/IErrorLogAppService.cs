@@ -9,6 +9,6 @@ namespace CentralDeErros.Application.Interfaces
     public interface IErrorLogAppService
     {
         IList<ErrorLogViewModel> GetAll();
-        Task<ErrorLogViewModel> Insert(ErrorLogViewModel errorLogViewModel);
+        Task<ErrorLogViewModel> Add(ErrorLogViewModel errorLogViewModel);
     }
 }

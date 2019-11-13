@@ -3,6 +3,8 @@ using CentralDeErros.Api.GraphQL;
 using CentralDeErros.Application.ApplicationServices;
 using CentralDeErros.Application.Interfaces;
 using CentralDeErros.Application.Mapping;
+using CentralDeErros.Domain.Interfaces.Services;
+using CentralDeErros.Data.Repositories;
 using CentralDeErros.Domain.Interfaces;
 using CentralDeErros.Domain.Models;
 using CentralDeErros.Domain.Services;
@@ -37,6 +39,7 @@ namespace CentralDeErros.Api
 
             services.AddScoped<IErrorLogService, ErrorLogService>();
             services.AddScoped<IErrorLogAppService, ErrorLogAppService>();
+            services.AddScoped<IErrorLogRepository, ErrorLogRepository>();
 
             services.AddAutoMapper(typeof(AutoMappingDomainToViewModel));
             services.AddAutoMapper(typeof(AutoMappingViewModelToDomain));
@@ -44,9 +47,9 @@ namespace CentralDeErros.Api
             services.AddScoped<IDependencyResolver>(s => new FuncDependencyResolver(s.GetRequiredService));
             services.AddScoped<CentralDeErrosSchema>();
             
-            services.AddGraphQL(o =>
+            services.AddGraphQL(options =>
             {
-                o.ExposeExceptions = true; // it can't be true in production
+                options.ExposeExceptions = true; // it can't be true in production
             }).AddGraphTypes(ServiceLifetime.Scoped)
             .AddUserContextBuilder(httpContext => httpContext.User);
 

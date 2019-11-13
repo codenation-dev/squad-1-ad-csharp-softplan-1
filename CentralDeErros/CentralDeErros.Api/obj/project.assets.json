@@ -916,7 +916,7 @@
           }
         }
       },
-      "MongoDB.Bson/2.9.2": {
+      "MongoDB.Bson/2.9.3": {
         "type": "package",
         "dependencies": {
           "NETStandard.Library": "1.6.1",
@@ -933,11 +933,11 @@
           "lib/netstandard1.5/MongoDB.Bson.dll": {}
         }
       },
-      "MongoDB.Driver/2.9.2": {
+      "MongoDB.Driver/2.9.3": {
         "type": "package",
         "dependencies": {
-          "MongoDB.Bson": "2.9.2",
-          "MongoDB.Driver.Core": "2.9.2",
+          "MongoDB.Bson": "2.9.3",
+          "MongoDB.Driver.Core": "2.9.3",
           "NETStandard.Library": "1.6.1",
           "System.ComponentModel.TypeConverter": "4.1.0",
           "System.Linq.Queryable": "4.0.1"
@@ -949,11 +949,11 @@
           "lib/netstandard1.5/MongoDB.Driver.dll": {}
         }
       },
-      "MongoDB.Driver.Core/2.9.2": {
+      "MongoDB.Driver.Core/2.9.3": {
         "type": "package",
         "dependencies": {
           "DnsClient": "1.2.0",
-          "MongoDB.Bson": "2.9.2",
+          "MongoDB.Bson": "2.9.3",
           "NETStandard.Library": "1.6.1",
           "SharpCompress": "0.23.0",
           "System.Collections.Specialized": "4.0.1",
@@ -3069,6 +3069,20 @@
           "bin/placeholder/CentralDeErros.Application.dll": {}
         }
       },
+      "CentralDeErros.Data/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.0",
+        "dependencies": {
+          "CentralDeErros.Domain": "1.0.0",
+          "MongoDB.Driver": "2.9.3"
+        },
+        "compile": {
+          "bin/placeholder/CentralDeErros.Data.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CentralDeErros.Data.dll": {}
+        }
+      },
       "CentralDeErros.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.0",
@@ -4432,10 +4446,10 @@
         "version.txt"
       ]
     },
-    "MongoDB.Bson/2.9.2": {
-      "sha512": "XZaqjCLyDJZnfcvy6Aefp2pfanKI/ArrT4tNqXAIAjsU4krZHXLj2shPDfg1NBS5ez0wFMV17aBUUJv43TF3ww==",
+    "MongoDB.Bson/2.9.3": {
+      "sha512": "iuLdgI/8Q3AnboPR0OTFDpqVAxTskW9IQLhxKt+O4IQ3s9hHVLLp1dGLChrwrcK+3Fa2MFNHvm6W8tEMV4VUmw==",
       "type": "package",
-      "path": "mongodb.bson/2.9.2",
+      "path": "mongodb.bson/2.9.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -4444,14 +4458,14 @@
         "lib/net452/MongoDB.Bson.xml",
         "lib/netstandard1.5/MongoDB.Bson.dll",
         "lib/netstandard1.5/MongoDB.Bson.xml",
-        "mongodb.bson.2.9.2.nupkg.sha512",
+        "mongodb.bson.2.9.3.nupkg.sha512",
         "mongodb.bson.nuspec"
       ]
     },
-    "MongoDB.Driver/2.9.2": {
-      "sha512": "On2uj3x0EXUIJCogdkJHrTF17rsDolyrdeXGJw+alse2R11WRa657noz44fyYX/00wPpbjHBx15Qqig8mAYvHQ==",
+    "MongoDB.Driver/2.9.3": {
+      "sha512": "nSHXATq6u9CSwfO/xCQSZe6JgJeVmLng0v6fwc6WFTYVnssAZjIaj1BiNu3XshHP+vYCzYZUmbPtRHltaXQiuw==",
       "type": "package",
-      "path": "mongodb.driver/2.9.2",
+      "path": "mongodb.driver/2.9.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -4460,14 +4474,14 @@
         "lib/net452/MongoDB.Driver.xml",
         "lib/netstandard1.5/MongoDB.Driver.dll",
         "lib/netstandard1.5/MongoDB.Driver.xml",
-        "mongodb.driver.2.9.2.nupkg.sha512",
+        "mongodb.driver.2.9.3.nupkg.sha512",
         "mongodb.driver.nuspec"
       ]
     },
-    "MongoDB.Driver.Core/2.9.2": {
-      "sha512": "ZyQVrrsmh0eLKxFZpQybboZwrnQJc526aksqG8umNfIy2UHqSa1/C8FpWi9/zEeaxjx9gvaFmc5dg6CouC1gXQ==",
+    "MongoDB.Driver.Core/2.9.3": {
+      "sha512": "j95XZhXTukZHUnZmEFEJPERscccfa42iLPbPBlwRJMK5XEZ9myCcxnWACvJwYXrU6RoRwUzYCFYoSHj6lHfgmA==",
       "type": "package",
-      "path": "mongodb.driver.core/2.9.2",
+      "path": "mongodb.driver.core/2.9.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -4476,7 +4490,7 @@
         "lib/net452/MongoDB.Driver.Core.xml",
         "lib/netstandard1.5/MongoDB.Driver.Core.dll",
         "lib/netstandard1.5/MongoDB.Driver.Core.xml",
-        "mongodb.driver.core.2.9.2.nupkg.sha512",
+        "mongodb.driver.core.2.9.3.nupkg.sha512",
         "mongodb.driver.core.nuspec"
       ]
     },
@@ -9553,6 +9567,11 @@
       "path": "../CentralDeErros.Application/CentralDeErros.Application.csproj",
       "msbuildProject": "../CentralDeErros.Application/CentralDeErros.Application.csproj"
     },
+    "CentralDeErros.Data/1.0.0": {
+      "type": "project",
+      "path": "../CentralDeErros.Data/CentralDeErros.Data.csproj",
+      "msbuildProject": "../CentralDeErros.Data/CentralDeErros.Data.csproj"
+    },
     "CentralDeErros.Domain/1.0.0": {
       "type": "project",
       "path": "../CentralDeErros.Domain/CentralDeErros.Domain.csproj",
@@ -9563,6 +9582,7 @@
     ".NETCoreApp,Version=v3.0": [
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 7.0.0",
       "CentralDeErros.Application >= 1.0.0",
+      "CentralDeErros.Data >= 1.0.0",
       "CentralDeErros.Domain >= 1.0.0",
       "GraphQL >= 2.4.0",
       "GraphQL.Server.Transports.AspNetCore >= 3.4.0",
@@ -9605,6 +9625,9 @@
           "projectReferences": {
             "C:\\Users\\diego.alves\\source\\GIT\\squad-1-ad-csharp-softplan-1\\CentralDeErros\\CentralDeErros.Application\\CentralDeErros.Application.csproj": {
               "projectPath": "C:\\Users\\diego.alves\\source\\GIT\\squad-1-ad-csharp-softplan-1\\CentralDeErros\\CentralDeErros.Application\\CentralDeErros.Application.csproj"
+            },
+            "C:\\Users\\diego.alves\\source\\GIT\\squad-1-ad-csharp-softplan-1\\CentralDeErros\\CentralDeErros.Data\\CentralDeErros.Data.csproj": {
+              "projectPath": "C:\\Users\\diego.alves\\source\\GIT\\squad-1-ad-csharp-softplan-1\\CentralDeErros\\CentralDeErros.Data\\CentralDeErros.Data.csproj"
             },
             "C:\\Users\\diego.alves\\source\\GIT\\squad-1-ad-csharp-softplan-1\\CentralDeErros\\CentralDeErros.Domain\\CentralDeErros.Domain.csproj": {
               "projectPath": "C:\\Users\\diego.alves\\source\\GIT\\squad-1-ad-csharp-softplan-1\\CentralDeErros\\CentralDeErros.Domain\\CentralDeErros.Domain.csproj"

@@ -1,30 +1,16 @@
 ﻿using CentralDeErros.Domain.Interfaces;
+using CentralDeErros.Domain.Interfaces.Services;
 using CentralDeErros.Domain.Models;
-using MongoDB.Driver;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+using CentralDeErros.Domain.Services.Base;
 
 namespace CentralDeErros.Domain.Services
 {
-    public class ErrorLogService : IErrorLogService
+    public class ErrorLogService : ServiceBase<ErrorLog>, IErrorLogService
     {
-        private readonly IMongoCollection<ErrorLog> _errorLogs;
-
-        public ErrorLogService(ICentralDeErrosDatabaseSettings settings)
+        //private readonly IErrorLogRepository _errorLogRepository;
+        public ErrorLogService(IErrorLogRepository errorRepository): base(errorRepository)
         {
-            var client = new MongoClient(settings.ConnectionString);
-            var database = client.GetDatabase(settings.DatabaseName);
-
-            _errorLogs = database.GetCollection<ErrorLog>(settings.ErrorLogCollectionName);
-        }
-
-        public IList<ErrorLog> Get() =>
-            _errorLogs.Find(errorLog => true).ToList();
-
-        async Task<ErrorLog> IErrorLogService.Insert(ErrorLog errorLog)
-        {
-            await _errorLogs.InsertOneAsync(errorLog);
-            return errorLog;
+           // _errorLogRepository = errorRepository;
         }
     }
 }

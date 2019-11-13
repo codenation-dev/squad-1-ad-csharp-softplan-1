@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CentralDeErros.Application\CentralDeErros.Application.csproj" />
+    <ProjectReference Include="..\CentralDeErros.Data\CentralDeErros.Data.csproj" />
     <ProjectReference Include="..\CentralDeErros.Domain\CentralDeErros.Domain.csproj" />
   </ItemGroup>
 

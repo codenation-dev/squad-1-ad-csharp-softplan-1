@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using CentralDeErros.Application.Interfaces;
 using CentralDeErros.Application.ViewModel;
-using CentralDeErros.Domain.Interfaces;
+using CentralDeErros.Domain.Interfaces.Services;
 using CentralDeErros.Domain.Models;
 using System;
 using System.Collections.Generic;
@@ -20,14 +20,14 @@ namespace CentralDeErros.Application.ApplicationServices
         }
         public IList<ErrorLogViewModel> GetAll()
         {
-            IList<ErrorLog> errorLogList = _errorLogService.Get();
+            IList<ErrorLog> errorLogList = _errorLogService.GetAll();
             return _mapper.Map<IList<ErrorLogViewModel>>(errorLogList);
         }
 
-        async Task<ErrorLogViewModel> IErrorLogAppService.Insert(ErrorLogViewModel errorLogViewModel)
+        public async Task<ErrorLogViewModel> Add(ErrorLogViewModel errorLogViewModel)
         {
             ErrorLog errorLog = _mapper.Map<ErrorLog>(errorLogViewModel);
-            return _mapper.Map<ErrorLogViewModel>(await _errorLogService.Insert(errorLog));
+            return _mapper.Map<ErrorLogViewModel>(await _errorLogService.Add(errorLog));
         }
     }
 }
