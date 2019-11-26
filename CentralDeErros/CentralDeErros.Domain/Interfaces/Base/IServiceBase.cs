@@ -8,8 +8,8 @@ namespace CentralDeErros.Domain.Interfaces.Base
     {
         Task<TModel> Add(TModel obj);
         void Update(TModel obj);
-        void Remove(string id);
-        TModel GetById(string id);
+        void Remove(Guid id);
+        TModel GetById(Guid id);
         IList<TModel> GetAll();
         IList<TModel> Find(Func<TModel, bool> predicate);
     }

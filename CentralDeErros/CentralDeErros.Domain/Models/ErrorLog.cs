@@ -9,6 +9,5 @@ namespace CentralDeErros.Domain.Models
         public string Level { get; set; }
         public bool Shelved { get; set; }
         public string Environment { get; set; }
-
     }
 }

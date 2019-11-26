@@ -1,8 +1,8 @@
 ﻿namespace CentralDeErros.Domain.Interfaces
 {
-    public interface ICentralDeErrosDatabaseSettings
+    public interface IAuditDatabaseSettings
     {
-        string ErrorLogCollectionName { get; set; }
+        string AuditCollectionName { get; set; }
         string ConnectionString { get; set; }
         string DatabaseName { get; set; }
     }

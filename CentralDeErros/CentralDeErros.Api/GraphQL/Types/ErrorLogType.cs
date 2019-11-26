@@ -7,7 +7,7 @@ namespace CentralDeErros.Api.GraphQL.Types
     {
         public ErrorLogType()
         {
-            Field(e => e.Id);
+            Field(e => e.Id, type:typeof(IdGraphType));
             Field(e => e.Code);
             Field(e => e.Message);
             Field(e => e.Level);

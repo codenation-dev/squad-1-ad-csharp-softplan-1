@@ -17,6 +17,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
+using CentralDeErros.Data.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace CentralDeErros.Api
 {
@@ -32,10 +35,13 @@ namespace CentralDeErros.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.Configure<CentralDeErrosDatabaseSettings>(Configuration.GetSection(nameof(CentralDeErrosDatabaseSettings)));
+            services.Configure<AuditDatabaseSettings>(Configuration.GetSection(nameof(AuditDatabaseSettings)));
 
-            services.AddSingleton<ICentralDeErrosDatabaseSettings>(sp =>
-                sp.GetRequiredService<IOptions<CentralDeErrosDatabaseSettings>>().Value);
+            services.AddSingleton<IAuditDatabaseSettings>(sp =>
+                sp.GetRequiredService<IOptions<AuditDatabaseSettings>>().Value);
+
+            services.AddDbContext<CentralDeErrosContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddScoped<IErrorLogService, ErrorLogService>();
             services.AddScoped<IErrorLogAppService, ErrorLogAppService>();
@@ -54,6 +60,11 @@ namespace CentralDeErros.Api
             .AddUserContextBuilder(httpContext => httpContext.User);
 
             services.Configure<IISServerOptions>(options =>
+            {
+                options.AllowSynchronousIO = true;
+            });
+
+            services.Configure<KestrelServerOptions>(options =>
             {
                 options.AllowSynchronousIO = true;
             });

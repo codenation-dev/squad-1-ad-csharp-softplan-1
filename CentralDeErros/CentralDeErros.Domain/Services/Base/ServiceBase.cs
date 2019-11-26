@@ -28,12 +28,12 @@ namespace CentralDeErros.Domain.Services.Base
             return _repositoryBase.GetAll();
         }
 
-        public TModel GetById(string id)
+        public TModel GetById(Guid id)
         {
             return _repositoryBase.GetById(id);
         }
 
-        public void Remove(string id)
+        public void Remove(Guid id)
         {
             _repositoryBase.Remove(id);
         }

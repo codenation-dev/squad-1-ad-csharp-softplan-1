@@ -2,9 +2,9 @@
 
 namespace CentralDeErros.Domain.Models
 {
-    public class CentralDeErrosDatabaseSettings : ICentralDeErrosDatabaseSettings
+    public class AuditDatabaseSettings : IAuditDatabaseSettings
     {
-        public string ErrorLogCollectionName { get; set; }
+        public string AuditCollectionName { get; set; }
         public string ConnectionString { get; set; }
         public string DatabaseName { get; set; }
     }

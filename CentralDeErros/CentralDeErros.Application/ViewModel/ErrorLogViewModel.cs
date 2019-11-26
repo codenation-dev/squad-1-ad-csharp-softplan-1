@@ -6,7 +6,9 @@ namespace CentralDeErros.Application.ViewModel
 {
     public class ErrorLogViewModel
     {
-        public string Id { get; set; }
+        public Guid Id { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
         public string Code { get; set; }
         public string Message { get; set; }
         public string Level { get; set; }

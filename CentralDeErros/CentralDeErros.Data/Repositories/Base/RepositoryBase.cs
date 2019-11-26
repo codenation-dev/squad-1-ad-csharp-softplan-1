@@ -5,48 +5,53 @@ using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using CentralDeErros.Data.Context;
+using System.Linq;
 
 namespace CentralDeErros.Data.Repositories.Base
 {
     public class RepositoryBase<TModel> : IRepositoryBase<TModel> where TModel : ModelBase
     {
-        protected IMongoCollection<TModel> _contextMongoDB;
-        protected IMongoDatabase _database;
-        public RepositoryBase(ICentralDeErrosDatabaseSettings settings)
+        protected readonly CentralDeErrosContext _context;
+        public RepositoryBase(CentralDeErrosContext context)
         {
-            var client = new MongoClient(settings.ConnectionString);
-            _database = client.GetDatabase(settings.DatabaseName);
+            _context = context;
         }
 
         public async Task<TModel> Add(TModel obj)
         {
-            await _contextMongoDB.InsertOneAsync(obj);
+            obj.Id = Guid.NewGuid();
+            obj.CreatedAt = obj.UpdatedAt = DateTime.UtcNow;
+                         
+            await _context.Set<TModel>().AddAsync(obj);
+            await _context.SaveChangesAsync();
             return obj;
         }
 
         public IList<TModel> Find(Func<TModel, bool> predicate)
         {
-            return _contextMongoDB.Find(p => true).ToList(); //TODO
+            return _context.Set<TModel>().Where(predicate).ToList(); 
         }
 
         public IList<TModel> GetAll()
         {
-            return _contextMongoDB.Find(p => true).ToList();
+            return _context.Set<TModel>().ToList();
         }
 
-        public TModel GetById(string id)
+        public TModel GetById(Guid id)
         {
-            return _contextMongoDB.Find<TModel>(p => p.Id == id).FirstOrDefault();
+            return _context.Set<TModel>().FirstOrDefault(p => p.Id == id);
         }
 
-        public void Remove(string id)
+        public void Remove(Guid id)
         {
-            _contextMongoDB.DeleteOne<TModel>(p => p.Id == id);
+            _context.Set<TModel>().Remove(this.GetById(id));
+            _context.SaveChanges();
         }
 
         public void Update(TModel obj)
         {
-            _contextMongoDB.ReplaceOne(e => e.Id == obj.Id, obj);
+            _context.Set<TModel>().Update(obj);
         }
     }
 }

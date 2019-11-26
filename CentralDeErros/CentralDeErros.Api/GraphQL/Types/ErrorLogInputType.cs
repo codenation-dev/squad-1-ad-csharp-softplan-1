@@ -11,7 +11,7 @@ namespace CentralDeErros.Api.GraphQL.Types
         public ErrorLogInputType()
         {
             Name = "errorLogInput";
-            Field<StringGraphType>("id");
+            Field<IdGraphType>("id");
             Field<StringGraphType>("code");
             Field<StringGraphType>("message");
             Field<StringGraphType>("level");
