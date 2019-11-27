@@ -1,4 +1,5 @@
 ﻿using CentralDeErros.Domain.Models.Base;
+using CentralDeErros.CrossCutting.CustomTypes;
 
 namespace CentralDeErros.Domain.Models
 {
@@ -8,6 +9,6 @@ namespace CentralDeErros.Domain.Models
         public string Message { get; set; } = string.Empty;
         public string Level { get; set; } = string.Empty;
         public bool Archieved { get; set; } = false;
-        public string Environment { get; set; } = string.Empty;
+        public Environment Environment { get; set; } = Environment.Unknown;
     }
 }

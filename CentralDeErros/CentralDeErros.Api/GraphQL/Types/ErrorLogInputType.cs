@@ -16,7 +16,7 @@ namespace CentralDeErros.Api.GraphQL.Types
             Field<StringGraphType>("message");
             Field<StringGraphType>("level");
             Field<StringGraphType>("archieved");
-            Field<StringGraphType>("environment");
+            Field<EnvironmentGraphQLType>("environment");
         }
     }
 }
