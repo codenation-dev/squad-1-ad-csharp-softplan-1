@@ -1,12 +1,12 @@
-﻿using CentralDeErros.Domain.Interfaces.Base;
-using CentralDeErros.Domain.Interfaces;
+﻿using CentralDeErros.Data.Context;
+using CentralDeErros.Domain.Interfaces.Base;
 using CentralDeErros.Domain.Models.Base;
+using Microsoft.EntityFrameworkCore;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
-using CentralDeErros.Data.Context;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace CentralDeErros.Data.Repositories.Base
 {
@@ -22,7 +22,7 @@ namespace CentralDeErros.Data.Repositories.Base
         {
             obj.Id = Guid.NewGuid();
             obj.CreatedAt = obj.UpdatedAt = DateTime.UtcNow;
-                         
+
             await _context.Set<TModel>().AddAsync(obj);
             await _context.SaveChangesAsync();
             return obj;
@@ -30,7 +30,7 @@ namespace CentralDeErros.Data.Repositories.Base
 
         public IList<TModel> Find(Func<TModel, bool> predicate)
         {
-            return _context.Set<TModel>().Where(predicate).ToList(); 
+            return _context.Set<TModel>().Where(predicate).ToList();
         }
 
         public IList<TModel> GetAll()
@@ -38,20 +38,22 @@ namespace CentralDeErros.Data.Repositories.Base
             return _context.Set<TModel>().ToList();
         }
 
-        public TModel GetById(Guid id)
+        public async Task<TModel> GetById(Guid id)
         {
-            return _context.Set<TModel>().FirstOrDefault(p => p.Id == id);
+            return await _context.Set<TModel>().FirstOrDefaultAsync(p => p.Id == id);
         }
 
-        public void Remove(Guid id)
+        public async Task Remove(Guid id)
         {
-            _context.Set<TModel>().Remove(this.GetById(id));
+            _context.Set<TModel>().Remove(await this.GetById(id));
             _context.SaveChanges();
         }
 
-        public void Update(TModel obj)
+        public async Task<TModel> Update(TModel obj)
         {
-            _context.Set<TModel>().Update(obj);
+            _context.Entry(obj).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+            return obj;
         }
     }
 }

@@ -10,5 +10,6 @@ namespace CentralDeErros.Application.Interfaces
     {
         IList<ErrorLogViewModel> GetAll();
         Task<ErrorLogViewModel> Add(ErrorLogViewModel errorLogViewModel);
+        Task<ErrorLogViewModel> ArchieveErrorLog(Guid id);
     }
 }

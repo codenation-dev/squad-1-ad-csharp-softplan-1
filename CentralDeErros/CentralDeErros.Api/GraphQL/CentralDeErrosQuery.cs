@@ -1,6 +1,5 @@
 ﻿using CentralDeErros.Api.GraphQL.Types;
 using CentralDeErros.Application.Interfaces;
-using CentralDeErros.Application.ViewModel;
 using GraphQL.Types;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,17 +17,17 @@ namespace CentralDeErros.Api.GraphQL
                 {
                     new QueryArgument<BooleanGraphType>
                     {
-                        Name = "onlyShelved"
+                        Name = "onlyNotArchieved"
                     }
                 }),
                 resolve: context =>
                 {
                     var user = (ClaimsPrincipal)context.UserContext;
                     
-                    var shelved = context.GetArgument<bool?>("onlyShelved");
+                    var archieved = context.GetArgument<bool?>("onlyNotArchieved");
 
-                    if (shelved.HasValue) {  //just an example
-                        return errorLogAppService.GetAll().Where(e => e.Shelved == shelved.Value);
+                    if (archieved.HasValue) {  //just an example
+                        return errorLogAppService.GetAll().Where(e => e.Archieved != archieved.Value);
                     }
                     return errorLogAppService.GetAll();
                 }

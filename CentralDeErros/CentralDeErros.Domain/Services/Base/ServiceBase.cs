@@ -28,9 +28,9 @@ namespace CentralDeErros.Domain.Services.Base
             return _repositoryBase.GetAll();
         }
 
-        public TModel GetById(Guid id)
+        public async Task<TModel> GetById(Guid id)
         {
-            return _repositoryBase.GetById(id);
+            return await _repositoryBase.GetById(id);
         }
 
         public void Remove(Guid id)
@@ -38,9 +38,9 @@ namespace CentralDeErros.Domain.Services.Base
             _repositoryBase.Remove(id);
         }
 
-        public void Update(TModel obj)
+        public async Task<TModel> Update(TModel obj)
         {
-            _repositoryBase.Update(obj);
+            return await _repositoryBase.Update(obj);
         }
     }
 }

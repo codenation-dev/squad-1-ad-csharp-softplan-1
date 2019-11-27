@@ -16,11 +16,21 @@ namespace CentralDeErros.Api.GraphQL
             FieldAsync<ErrorLogType>(
                 "addErrorLog",
                 arguments: new QueryArguments(
-                    new QueryArgument<NonNullGraphType<ErrorLogInputType>> { Name = "errorLog"}),
+                    new QueryArgument<NonNullGraphType<ErrorLogInputType>> { Name = "errorLog" }),
                 resolve: async context =>
                 {
                     var errorLog = context.GetArgument<ErrorLogViewModel>("errorLog");
                     return await context.TryAsyncResolve(async c => await errorLogAppService.Add(errorLog));
+                });
+
+            FieldAsync<ErrorLogType>(
+                "archieveErrorLog",
+                arguments: new QueryArguments(
+                    new QueryArgument<NonNullGraphType<ArchieveErrorLogInputType>> { Name = "errorLog" }),
+                resolve: async context =>
+                {
+                    var errorLog = context.GetArgument<ErrorLogViewModel>("errorLog");
+                    return await context.TryAsyncResolve(async c => await errorLogAppService.ArchieveErrorLog(errorLog.Id));
                 });
         }
     }

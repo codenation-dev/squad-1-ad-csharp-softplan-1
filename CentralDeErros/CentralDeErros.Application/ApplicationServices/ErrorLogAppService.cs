@@ -29,5 +29,13 @@ namespace CentralDeErros.Application.ApplicationServices
             ErrorLog errorLog = _mapper.Map<ErrorLog>(errorLogViewModel);
             return _mapper.Map<ErrorLogViewModel>(await _errorLogService.Add(errorLog));
         }
+
+        public async Task<ErrorLogViewModel> ArchieveErrorLog(Guid id)
+        {
+            var errorLog = await _errorLogService.GetById(id);
+            errorLog.Archieved = true;
+
+            return _mapper.Map<ErrorLogViewModel>(await _errorLogService.Update(errorLog));
+        }
     }
 }
