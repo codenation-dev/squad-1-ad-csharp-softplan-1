@@ -1,0 +1,11 @@
+C:\Users\Aure\Contacts\Documents\GitHub\squad-1-ad-csharp-softplan-1\CentralDeErros\CentralDeErros.Data\bin\Debug\netcoreapp3.0\CentralDeErros.Data.deps.json
+C:\Users\Aure\Contacts\Documents\GitHub\squad-1-ad-csharp-softplan-1\CentralDeErros\CentralDeErros.Data\bin\Debug\netcoreapp3.0\CentralDeErros.Data.dll
+C:\Users\Aure\Contacts\Documents\GitHub\squad-1-ad-csharp-softplan-1\CentralDeErros\CentralDeErros.Data\bin\Debug\netcoreapp3.0\CentralDeErros.Data.pdb
+C:\Users\Aure\Contacts\Documents\GitHub\squad-1-ad-csharp-softplan-1\CentralDeErros\CentralDeErros.Data\bin\Debug\netcoreapp3.0\CentralDeErros.Domain.dll
+C:\Users\Aure\Contacts\Documents\GitHub\squad-1-ad-csharp-softplan-1\CentralDeErros\CentralDeErros.Data\bin\Debug\netcoreapp3.0\CentralDeErros.Domain.pdb
+C:\Users\Aure\Contacts\Documents\GitHub\squad-1-ad-csharp-softplan-1\CentralDeErros\CentralDeErros.Data\obj\Debug\netcoreapp3.0\CentralDeErros.Data.csprojAssemblyReference.cache
+C:\Users\Aure\Contacts\Documents\GitHub\squad-1-ad-csharp-softplan-1\CentralDeErros\CentralDeErros.Data\obj\Debug\netcoreapp3.0\CentralDeErros.Data.AssemblyInfoInputs.cache
+C:\Users\Aure\Contacts\Documents\GitHub\squad-1-ad-csharp-softplan-1\CentralDeErros\CentralDeErros.Data\obj\Debug\netcoreapp3.0\CentralDeErros.Data.AssemblyInfo.cs
+C:\Users\Aure\Contacts\Documents\GitHub\squad-1-ad-csharp-softplan-1\CentralDeErros\CentralDeErros.Data\obj\Debug\netcoreapp3.0\CentralDeErros.Data.csproj.CopyComplete
+C:\Users\Aure\Contacts\Documents\GitHub\squad-1-ad-csharp-softplan-1\CentralDeErros\CentralDeErros.Data\obj\Debug\netcoreapp3.0\CentralDeErros.Data.dll
+C:\Users\Aure\Contacts\Documents\GitHub\squad-1-ad-csharp-softplan-1\CentralDeErros\CentralDeErros.Data\obj\Debug\netcoreapp3.0\CentralDeErros.Data.pdb

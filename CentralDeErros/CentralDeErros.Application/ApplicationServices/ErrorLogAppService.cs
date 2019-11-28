@@ -37,5 +37,10 @@ namespace CentralDeErros.Application.ApplicationServices
 
             return _mapper.Map<ErrorLogViewModel>(await _errorLogService.Update(errorLog));
         }
+
+        public void RemoveErrorLog(Guid id)
+        {
+            _errorLogService.Remove(id);
+        }
     }
 }

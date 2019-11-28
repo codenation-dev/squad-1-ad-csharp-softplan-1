@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\diego.alves\\source\\GIT\\squad-1-ad-csharp-softplan-1\\CentralDeErros\\CentralDeErros.Data\\CentralDeErros.Data.csproj": {}
+    "C:\\Users\\Aure\\Contacts\\Documents\\GitHub\\squad-1-ad-csharp-softplan-1\\CentralDeErros\\CentralDeErros.Data\\CentralDeErros.Data.csproj": {}
   },
   "projects": {
-    "C:\\Users\\diego.alves\\source\\GIT\\squad-1-ad-csharp-softplan-1\\CentralDeErros\\CentralDeErros.Data\\CentralDeErros.Data.csproj": {
+    "C:\\Users\\Aure\\Contacts\\Documents\\GitHub\\squad-1-ad-csharp-softplan-1\\CentralDeErros\\CentralDeErros.Data\\CentralDeErros.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\diego.alves\\source\\GIT\\squad-1-ad-csharp-softplan-1\\CentralDeErros\\CentralDeErros.Data\\CentralDeErros.Data.csproj",
+        "projectUniqueName": "C:\\Users\\Aure\\Contacts\\Documents\\GitHub\\squad-1-ad-csharp-softplan-1\\CentralDeErros\\CentralDeErros.Data\\CentralDeErros.Data.csproj",
         "projectName": "CentralDeErros.Data",
-        "projectPath": "C:\\Users\\diego.alves\\source\\GIT\\squad-1-ad-csharp-softplan-1\\CentralDeErros\\CentralDeErros.Data\\CentralDeErros.Data.csproj",
-        "packagesPath": "C:\\Users\\diego.alves\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\diego.alves\\source\\GIT\\squad-1-ad-csharp-softplan-1\\CentralDeErros\\CentralDeErros.Data\\obj\\",
+        "projectPath": "C:\\Users\\Aure\\Contacts\\Documents\\GitHub\\squad-1-ad-csharp-softplan-1\\CentralDeErros\\CentralDeErros.Data\\CentralDeErros.Data.csproj",
+        "packagesPath": "C:\\Users\\Aure\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Aure\\Contacts\\Documents\\GitHub\\squad-1-ad-csharp-softplan-1\\CentralDeErros\\CentralDeErros.Data\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\diego.alves\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Aure\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -30,8 +30,8 @@
         "frameworks": {
           "netcoreapp3.0": {
             "projectReferences": {
-              "C:\\Users\\diego.alves\\source\\GIT\\squad-1-ad-csharp-softplan-1\\CentralDeErros\\CentralDeErros.Domain\\CentralDeErros.Domain.csproj": {
-                "projectPath": "C:\\Users\\diego.alves\\source\\GIT\\squad-1-ad-csharp-softplan-1\\CentralDeErros\\CentralDeErros.Domain\\CentralDeErros.Domain.csproj"
+              "C:\\Users\\Aure\\Contacts\\Documents\\GitHub\\squad-1-ad-csharp-softplan-1\\CentralDeErros\\CentralDeErros.Domain\\CentralDeErros.Domain.csproj": {
+                "projectPath": "C:\\Users\\Aure\\Contacts\\Documents\\GitHub\\squad-1-ad-csharp-softplan-1\\CentralDeErros\\CentralDeErros.Domain\\CentralDeErros.Domain.csproj"
               }
             }
           }
@@ -81,20 +81,20 @@
         }
       }
     },
-    "C:\\Users\\diego.alves\\source\\GIT\\squad-1-ad-csharp-softplan-1\\CentralDeErros\\CentralDeErros.Domain\\CentralDeErros.Domain.csproj": {
+    "C:\\Users\\Aure\\Contacts\\Documents\\GitHub\\squad-1-ad-csharp-softplan-1\\CentralDeErros\\CentralDeErros.Domain\\CentralDeErros.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\diego.alves\\source\\GIT\\squad-1-ad-csharp-softplan-1\\CentralDeErros\\CentralDeErros.Domain\\CentralDeErros.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Aure\\Contacts\\Documents\\GitHub\\squad-1-ad-csharp-softplan-1\\CentralDeErros\\CentralDeErros.Domain\\CentralDeErros.Domain.csproj",
         "projectName": "CentralDeErros.Domain",
-        "projectPath": "C:\\Users\\diego.alves\\source\\GIT\\squad-1-ad-csharp-softplan-1\\CentralDeErros\\CentralDeErros.Domain\\CentralDeErros.Domain.csproj",
-        "packagesPath": "C:\\Users\\diego.alves\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\diego.alves\\source\\GIT\\squad-1-ad-csharp-softplan-1\\CentralDeErros\\CentralDeErros.Domain\\obj\\",
+        "projectPath": "C:\\Users\\Aure\\Contacts\\Documents\\GitHub\\squad-1-ad-csharp-softplan-1\\CentralDeErros\\CentralDeErros.Domain\\CentralDeErros.Domain.csproj",
+        "packagesPath": "C:\\Users\\Aure\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Aure\\Contacts\\Documents\\GitHub\\squad-1-ad-csharp-softplan-1\\CentralDeErros\\CentralDeErros.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\diego.alves\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Aure\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

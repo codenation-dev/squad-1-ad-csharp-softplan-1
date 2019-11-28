@@ -1,0 +1,11 @@
+C:\Users\Aure\Contacts\Documents\GitHub\squad-1-ad-csharp-softplan-1\CentralDeErros\CentralDeErros.Application\bin\Debug\netcoreapp3.0\CentralDeErros.Application.deps.json
+C:\Users\Aure\Contacts\Documents\GitHub\squad-1-ad-csharp-softplan-1\CentralDeErros\CentralDeErros.Application\bin\Debug\netcoreapp3.0\CentralDeErros.Application.dll
+C:\Users\Aure\Contacts\Documents\GitHub\squad-1-ad-csharp-softplan-1\CentralDeErros\CentralDeErros.Application\bin\Debug\netcoreapp3.0\CentralDeErros.Application.pdb
+C:\Users\Aure\Contacts\Documents\GitHub\squad-1-ad-csharp-softplan-1\CentralDeErros\CentralDeErros.Application\bin\Debug\netcoreapp3.0\CentralDeErros.Domain.dll
+C:\Users\Aure\Contacts\Documents\GitHub\squad-1-ad-csharp-softplan-1\CentralDeErros\CentralDeErros.Application\bin\Debug\netcoreapp3.0\CentralDeErros.Domain.pdb
+C:\Users\Aure\Contacts\Documents\GitHub\squad-1-ad-csharp-softplan-1\CentralDeErros\CentralDeErros.Application\obj\Debug\netcoreapp3.0\CentralDeErros.Application.csprojAssemblyReference.cache
+C:\Users\Aure\Contacts\Documents\GitHub\squad-1-ad-csharp-softplan-1\CentralDeErros\CentralDeErros.Application\obj\Debug\netcoreapp3.0\CentralDeErros.Application.AssemblyInfoInputs.cache
+C:\Users\Aure\Contacts\Documents\GitHub\squad-1-ad-csharp-softplan-1\CentralDeErros\CentralDeErros.Application\obj\Debug\netcoreapp3.0\CentralDeErros.Application.AssemblyInfo.cs
+C:\Users\Aure\Contacts\Documents\GitHub\squad-1-ad-csharp-softplan-1\CentralDeErros\CentralDeErros.Application\obj\Debug\netcoreapp3.0\CentralDeErros.Application.csproj.CopyComplete
+C:\Users\Aure\Contacts\Documents\GitHub\squad-1-ad-csharp-softplan-1\CentralDeErros\CentralDeErros.Application\obj\Debug\netcoreapp3.0\CentralDeErros.Application.dll
+C:\Users\Aure\Contacts\Documents\GitHub\squad-1-ad-csharp-softplan-1\CentralDeErros\CentralDeErros.Application\obj\Debug\netcoreapp3.0\CentralDeErros.Application.pdb
