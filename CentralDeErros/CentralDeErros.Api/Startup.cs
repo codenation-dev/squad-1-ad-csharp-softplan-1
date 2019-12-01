@@ -1,6 +1,6 @@
 using AutoMapper;
 using CentralDeErros.Api.GraphQL;
-using CentralDeErros.Application.ApplicationServices;
+using CentralDeErros.Application.Services;
 using CentralDeErros.Application.Interfaces;
 using CentralDeErros.Application.Mapping;
 using CentralDeErros.Domain.Interfaces.Services;
