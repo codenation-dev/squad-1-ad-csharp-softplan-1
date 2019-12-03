@@ -2,9 +2,9 @@
 
 namespace CentralDeErros.Api.GraphQL.Types
 {
-    public class EnvironmentGraphQLType : EnumerationGraphType
+    public class EnvironmentType : EnumerationGraphType
     {
-        public EnvironmentGraphQLType()
+        public EnvironmentType()
         {
             Name = "Environment";
             Description = "Environment where the application is running.";
