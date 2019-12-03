@@ -3,9 +3,10 @@ using CentralDeErros.Api.GraphQL;
 using CentralDeErros.Application.Services;
 using CentralDeErros.Application.Interfaces;
 using CentralDeErros.Application.Mapping;
-using CentralDeErros.Domain.Interfaces.Services;
+using CentralDeErros.Data.Context;
 using CentralDeErros.Data.Repositories;
 using CentralDeErros.Domain.Interfaces;
+using CentralDeErros.Domain.Interfaces.Services;
 using CentralDeErros.Domain.Models;
 using CentralDeErros.Domain.Services;
 using GraphQL;
@@ -13,13 +14,12 @@ using GraphQL.Server;
 using GraphQL.Server.Ui.Playground;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
-using Microsoft.AspNetCore.Server.Kestrel.Core;
-using CentralDeErros.Data.Context;
-using Microsoft.EntityFrameworkCore;
 
 namespace CentralDeErros.Api
 {

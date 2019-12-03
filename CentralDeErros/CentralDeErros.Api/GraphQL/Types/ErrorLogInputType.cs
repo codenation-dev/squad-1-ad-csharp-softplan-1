@@ -1,8 +1,4 @@
 ﻿using GraphQL.Types;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace CentralDeErros.Api.GraphQL.Types
 {
@@ -16,7 +12,7 @@ namespace CentralDeErros.Api.GraphQL.Types
             Field<StringGraphType>("message");
             Field<StringGraphType>("level");
             Field<StringGraphType>("archieved");
-            Field<StringGraphType>("environment");
+            Field<EnvironmentType>("environment");
         }
     }
 }

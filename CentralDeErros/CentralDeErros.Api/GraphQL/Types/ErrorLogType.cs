@@ -12,7 +12,7 @@ namespace CentralDeErros.Api.GraphQL.Types
             Field(e => e.Message);
             Field(e => e.Level);
             Field(e => e.Archieved);
-            Field(e => e.Environment);
+            Field<EnvironmentType>("Environment", resolve: e => e.Source.Environment);
         }
     }
 }
