@@ -9,7 +9,7 @@ namespace CentralDeErros.Data.Config
         public void Configure(EntityTypeBuilder<ErrorLog> builder)
         {
             builder.ToTable("error_log");
-            builder.HasKey(p => p.Id);
+            builder.HasKey(p => p.Id).HasName("id");
         }
     }
 }
