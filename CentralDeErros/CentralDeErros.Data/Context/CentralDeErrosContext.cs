@@ -1,20 +1,26 @@
 ﻿using CentralDeErros.Data.Config;
 using CentralDeErros.Domain.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace CentralDeErros.Data.Context
 {
     public class CentralDeErrosContext : DbContext
     {
-        public CentralDeErrosContext(DbContextOptions options): base(options)
-        {
+        public DbSet<ErrorLog> ErrorLogs { get; set; }
 
+        public CentralDeErrosContext(DbContextOptions<CentralDeErrosContext> options): base(options)
+        {
         }
 
-        public DbSet<ErrorLog> ErrorLogs { get; set; }
+        public CentralDeErrosContext()
+        {
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+                optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=CentralDeErros;Trusted_Connection=True");
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

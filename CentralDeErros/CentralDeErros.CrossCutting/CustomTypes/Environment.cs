@@ -1,6 +1,6 @@
 ﻿namespace CentralDeErros.CrossCutting.CustomTypes
 {
-    public enum Environment
+    public enum ServerEnvironment
     {
         Unknown = 0,
         Development = 1,
