@@ -48,7 +48,7 @@ namespace CentralDeErros.Api.Controllers.Base
                     new Claim(ClaimTypes.Email, user.Email),
                     new Claim("id", user.Id.ToString()),
                 }),
-                Expires = DateTime.UtcNow.AddMinutes(50),
+                Expires = DateTime.UtcNow.AddMinutes(40),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
 
