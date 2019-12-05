@@ -47,6 +47,9 @@ namespace CentralDeErros.Api.Controllers
 
             user.AccessToken = GenerateJWT(user);
 
+
+
+
             return Ok(user);
         }
 
@@ -63,7 +66,9 @@ namespace CentralDeErros.Api.Controllers
                     new Claim(ClaimTypes.Email, usuario.Email),
                     new Claim("id", usuario.Id.ToString()),
                 }),
+
                 Expires = DateTime.UtcNow.AddMinutes(30),
+
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
 

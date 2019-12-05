@@ -23,6 +23,7 @@ namespace CentralDeErros.Api.Controllers.Base
         public BaseController(IUserAppService userAppService)
         {
             _userAppService = userAppService;
+
             _appSettings = new AppSettings();
         }
 
@@ -47,7 +48,7 @@ namespace CentralDeErros.Api.Controllers.Base
                     new Claim(ClaimTypes.Email, user.Email),
                     new Claim("id", user.Id.ToString()),
                 }),
-                Expires = DateTime.UtcNow.AddMinutes(30),
+                Expires = DateTime.UtcNow.AddMinutes(50),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
 
