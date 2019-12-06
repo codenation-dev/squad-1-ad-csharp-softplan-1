@@ -1,5 +1,4 @@
 using AutoMapper;
-using CentralDeErros.Api.GraphQL;
 using CentralDeErros.Application.Services;
 using CentralDeErros.Application.Interfaces;
 using CentralDeErros.Application.Mapping;
@@ -9,9 +8,6 @@ using CentralDeErros.Domain.Interfaces;
 using CentralDeErros.Domain.Interfaces.Services;
 using CentralDeErros.Domain.Models;
 using CentralDeErros.Domain.Services;
-using GraphQL;
-using GraphQL.Server;
-using GraphQL.Server.Ui.Playground;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
@@ -49,15 +45,8 @@ namespace CentralDeErros.Api
 
             services.AddAutoMapper(typeof(AutoMappingDomainToViewModel));
             services.AddAutoMapper(typeof(AutoMappingViewModelToDomain));
-
-            services.AddScoped<IDependencyResolver>(s => new FuncDependencyResolver(s.GetRequiredService));
-            services.AddScoped<CentralDeErrosSchema>();
             
-            services.AddGraphQL(options =>
-            {
-                options.ExposeExceptions = true; // it can't be true in production
-            }).AddGraphTypes(ServiceLifetime.Scoped)
-            .AddUserContextBuilder(httpContext => httpContext.User);
+            
 
             services.Configure<IISServerOptions>(options =>
             {
@@ -84,8 +73,8 @@ namespace CentralDeErros.Api
 
             app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
 
-            app.UseGraphQL<CentralDeErrosSchema>();
-            app.UseGraphQLPlayground(new GraphQLPlaygroundOptions());
+            //app.UseGraphQL<CentralDeErrosSchema>();
+            //app.UseGraphQLPlayground(new GraphQLPlaygroundOptions());
 
             app.UseRouting();
 

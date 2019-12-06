@@ -6,9 +6,6 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
-    <PackageReference Include="GraphQL" Version="2.4.0" />
-    <PackageReference Include="GraphQL.Server.Transports.AspNetCore" Version="3.4.0" />
-    <PackageReference Include="GraphQL.Server.Ui.Playground" Version="3.4.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.0.0">
       <PrivateAssets>all</PrivateAssets>
@@ -22,10 +19,6 @@
     <ProjectReference Include="..\CentralDeErros.Application\CentralDeErros.Application.csproj" />
     <ProjectReference Include="..\CentralDeErros.CrossCutting\CentralDeErros.CrossCutting.csproj" />
     <ProjectReference Include="..\CentralDeErros.Data\CentralDeErros.Data.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Controllers\" />
   </ItemGroup>
 
 </Project>
