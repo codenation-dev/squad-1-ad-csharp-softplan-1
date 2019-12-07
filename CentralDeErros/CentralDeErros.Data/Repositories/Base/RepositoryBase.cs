@@ -18,13 +18,13 @@ namespace CentralDeErros.Data.Repositories.Base
             _context = context;
         }
 
-        public async Task<TModel> Add(TModel obj)
+        public TModel Add(TModel obj)
         {
             obj.Id = Guid.NewGuid();
             obj.CreatedAt = obj.UpdatedAt = DateTime.UtcNow;
 
-            await _context.Set<TModel>().AddAsync(obj);
-            await _context.SaveChangesAsync();
+            _context.Set<TModel>().Add(obj);
+            _context.SaveChanges();
             return obj;
         }
 
@@ -38,21 +38,21 @@ namespace CentralDeErros.Data.Repositories.Base
             return _context.Set<TModel>().ToList();
         }
 
-        public async Task<TModel> GetById(Guid id)
+        public TModel GetById(Guid id)
         {
-            return await _context.Set<TModel>().FirstOrDefaultAsync(p => p.Id == id);
+            return _context.Set<TModel>().FirstOrDefault(p => p.Id == id);
         }
 
-        public async Task Remove(Guid id)
+        public void Remove(Guid id)
         {
-            _context.Set<TModel>().Remove(await this.GetById(id));
+            _context.Set<TModel>().Remove( this.GetById(id));
             _context.SaveChanges();
         }
 
-        public async Task<TModel> Update(TModel obj)
+        public TModel Update(TModel obj)
         {
-            _context.Entry(obj).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
+            //_context.Entry(obj).State = EntityState.Modified;
+            _context.SaveChanges();
             return obj;
         }
     }

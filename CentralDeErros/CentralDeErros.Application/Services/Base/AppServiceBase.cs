@@ -3,7 +3,6 @@ using CentralDeErros.Application.Interfaces.Base;
 using CentralDeErros.Domain.Interfaces.Base;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace CentralDeErros.Application.Services.Base
@@ -25,10 +24,10 @@ namespace CentralDeErros.Application.Services.Base
             return _mapper.Map<IList<TViewModel>>(modelList);
         }
 
-        public async Task<TViewModel> Add(TViewModel viewModel)
+        public TViewModel Add(TViewModel viewModel)
         {
             TModel model = _mapper.Map<TModel>(viewModel);
-            return _mapper.Map<TViewModel>(await _service.Add(model));
+            return _mapper.Map<TViewModel>(_service.Add(model));
         }
 
         public IList<TViewModel> Find(Func<TModel, bool> predicate)
