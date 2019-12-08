@@ -13,9 +13,9 @@ namespace CentralDeErros.Domain.Services.Base
         {
             _repositoryBase = repositoryBase;
         }
-        public async Task<TModel> Add(TModel obj)
+        public TModel Add(TModel obj)
         {
-            return await _repositoryBase.Add(obj);
+            return _repositoryBase.Add(obj);
         }
 
         public IList<TModel> Find(Func<TModel, bool> predicate)
@@ -28,9 +28,9 @@ namespace CentralDeErros.Domain.Services.Base
             return _repositoryBase.GetAll();
         }
 
-        public async Task<TModel> GetById(Guid id)
+        public TModel GetById(Guid id)
         {
-            return await _repositoryBase.GetById(id);
+            return _repositoryBase.GetById(id);
         }
 
         public void Remove(Guid id)
@@ -38,9 +38,9 @@ namespace CentralDeErros.Domain.Services.Base
             _repositoryBase.Remove(id);
         }
 
-        public async Task<TModel> Update(TModel obj)
+        public TModel Update(TModel obj)
         {
-            return await _repositoryBase.Update(obj);
+            return _repositoryBase.Update(obj);
         }
     }
 }

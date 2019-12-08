@@ -16,12 +16,12 @@ namespace CentralDeErros.Application.Services
 
         }
 
-        public async Task<ErrorLogViewModel> ArchieveErrorLog(Guid id)
+        public ErrorLogViewModel ArchieveErrorLog(Guid id)
         {
-            var errorLog = await _service.GetById(id);
+            var errorLog = _service.GetById(id);
             errorLog.Archieved = true;
 
-            return _mapper.Map<ErrorLogViewModel>(await _service.Update(errorLog));
+            return _mapper.Map<ErrorLogViewModel>(_service.Update(errorLog));
         }
     }
 }

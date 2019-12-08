@@ -8,6 +8,6 @@ namespace CentralDeErros.Application.Interfaces
 {
     public interface IErrorLogAppService : IAppServiceBase<ErrorLogViewModel, ErrorLog>
     {
-        Task<ErrorLogViewModel> ArchieveErrorLog(Guid id);
+        ErrorLogViewModel ArchieveErrorLog(Guid id);
     }
 }

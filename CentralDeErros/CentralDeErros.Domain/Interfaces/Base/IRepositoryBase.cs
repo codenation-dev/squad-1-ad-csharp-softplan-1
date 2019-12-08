@@ -7,10 +7,10 @@ namespace CentralDeErros.Domain.Interfaces.Base
 {
     public interface IRepositoryBase<TModel> where TModel : class
     {
-        Task<TModel> Add(TModel obj);
-        Task<TModel> Update(TModel obj);
-        Task Remove(Guid id);
-        Task<TModel> GetById(Guid id);
+        TModel Add(TModel obj);
+        TModel Update(TModel obj);
+        void Remove(Guid id);
+        TModel GetById(Guid id);
         IList<TModel> GetAll();
         IList<TModel> Find(Func<TModel, bool> predicate);
     }

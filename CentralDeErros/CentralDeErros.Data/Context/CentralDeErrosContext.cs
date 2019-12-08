@@ -6,7 +6,7 @@ namespace CentralDeErros.Data.Context
 {
     public class CentralDeErrosContext : DbContext
     {
-        public DbSet<ErrorLog> ErrorLogs { get; set; }
+        public virtual DbSet<ErrorLog> ErrorLogs { get; set; }
 
         public CentralDeErrosContext(DbContextOptions<CentralDeErrosContext> options): base(options)
         {
