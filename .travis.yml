@@ -1,0 +1,3 @@
+language: csharp
+solution: CentralDeErros\CentralDeErros.sln
+mono: latest
