@@ -9,6 +9,7 @@ using CentralDeErros.Domain.Interfaces;
 using CentralDeErros.Domain.Interfaces.Services;
 using CentralDeErros.Domain.Models;
 using CentralDeErros.Domain.Services;
+using CentralDeErros.CrossCutting.Helpers;
 using GraphQL;
 using GraphQL.Server;
 using GraphQL.Server.Ui.Playground;
@@ -20,6 +21,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
+using CentralDeErros.Domain.Interfaces.Repositories;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System;
+using System.Text;
 
 namespace CentralDeErros.Api
 {
@@ -47,6 +53,10 @@ namespace CentralDeErros.Api
             services.AddScoped<IErrorLogAppService, ErrorLogAppService>();
             services.AddScoped<IErrorLogRepository, ErrorLogRepository>();
 
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IUserAppService, UserAppService>();
+            services.AddScoped<IUserRepository, UserRepository>();
+
             services.AddAutoMapper(typeof(AutoMappingDomainToViewModel));
             services.AddAutoMapper(typeof(AutoMappingViewModelToDomain));
 
@@ -68,10 +78,41 @@ namespace CentralDeErros.Api
             {
                 options.AllowSynchronousIO = true;
             });
+            ConfigureAuth(services);
 
             services.AddControllers();
 
             services.AddCors();
+        }
+
+        private void ConfigureAuth(IServiceCollection services)
+        {
+            var appSettingsSection = Configuration.GetSection("AppSettings");
+            services.Configure<AppSettings>(appSettingsSection);
+
+            var appSettings = appSettingsSection.Get<AppSettings>();
+            var secretKeyJWT = Encoding.ASCII.GetBytes(appSettings.SecretKeyJWT);
+
+            services.AddAuthentication(x =>
+            {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(x =>
+            {
+                x.RequireHttpsMetadata = false;
+                x.SaveToken = true;
+                x.ClaimsIssuer = "api.centraldeerros.com";
+                x.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(secretKeyJWT),
+                    ValidateIssuer = false,
+                    ValidateAudience = false,
+                    ValidateLifetime = true,
+                    ClockSkew = TimeSpan.Zero,
+                };
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
