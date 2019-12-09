@@ -9,6 +9,7 @@ namespace CentralDeErros.Application.Mapping
         public AutoMappingDomainToViewModel()
         {
             CreateMap<ErrorLog, ErrorLogViewModel>();
+            CreateMap<User, UserViewModel>();
         }
     }
 }
