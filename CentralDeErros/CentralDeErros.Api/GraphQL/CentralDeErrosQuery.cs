@@ -1,10 +1,9 @@
-﻿using CentralDeErros.Api.GraphQL.Types;
+﻿using CentralDeErros.Api.GraphQL.Filters;
+using CentralDeErros.Api.GraphQL.Types;
 using CentralDeErros.Application.Interfaces;
 using CentralDeErros.Application.ViewModel;
 using GraphQL.Types;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
 
 namespace CentralDeErros.Api.GraphQL
@@ -17,26 +16,26 @@ namespace CentralDeErros.Api.GraphQL
                 "errorlogs",
                 arguments: new QueryArguments(new List<QueryArgument>
                 {
-                    new QueryArgument<BooleanGraphType>
+                    new QueryArgument<ErrorLogFilterInputType>
                     {
-                        Name = "onlyNotArchieved"
+                        Name = "filter"
                     },
-                    new QueryArgument<OrderType>{
-                        Name = "order"
+                    new QueryArgument<OrderByType>{
+                        Name = "orderBy"
                     }
                 }),
                 resolve: context =>
                 {
                     var user = (ClaimsPrincipal)context.UserContext;
-                    var onlyNotArchieved = context.GetArgument<bool?>("onlyNotArchieved");
-                    var order = context.GetArgument<OrderEnum.Order?>("order");
+                    var orderBy = context.GetArgument<OrderByEnum.OrderBy?>("orderBy");
+                    var filter = context.GetArgument<ErrorLogFilter?>("filter");
 
-                    if (onlyNotArchieved.HasValue)
-                    {
-                        return errorLogAppService.Find(p => !p.Archieved);
-                    }
-                    
-                    return errorLogAppService.GetAll();
+                    IList<ErrorLogViewModel> errorLogs = errorLogAppService.GetAll();
+
+                    if (orderBy.HasValue)
+                        errorLogs = errorLogs.OrderErrorLogBy((OrderByEnum.OrderBy)orderBy);
+
+                    return errorLogs;
                 }
             );
         }
