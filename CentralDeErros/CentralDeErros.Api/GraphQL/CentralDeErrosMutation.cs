@@ -3,10 +3,6 @@ using CentralDeErros.Application.Interfaces;
 using CentralDeErros.Application.ViewModel;
 using CentralDeErros.CrossCutting.Utils;
 using GraphQL.Types;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace CentralDeErros.Api.GraphQL
 {
@@ -41,17 +37,11 @@ namespace CentralDeErros.Api.GraphQL
                 resolve: context =>
                 {
                     var user = context.GetArgument<UserViewModel>("user");
-                    var userViewModel = new UserViewModel()
-                    {
-                        Name = user.Name,
-                        Email = user.Email,
-                        Login = user.Login,
-                        Password = user.Password.ToHashMD5(),
-                        Active = true
-                    };
+                    user.Password = user.Password.ToHashMD5();
+                    user.Active = true;
 
                     //TODO: fazer os devidos tratamentos
-                    return userAppService.Add(userViewModel);
+                    return userAppService.Add(user);
                 });
         }
     }
