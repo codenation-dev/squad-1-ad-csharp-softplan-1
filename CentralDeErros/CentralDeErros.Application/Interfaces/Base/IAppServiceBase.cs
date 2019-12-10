@@ -9,7 +9,7 @@ namespace CentralDeErros.Application.Interfaces.Base
         where TModel : class
     {
         IList<TViewModel> GetAll();
-        Task<TViewModel> Add(TViewModel obj);
+        TViewModel Add(TViewModel obj);
         IList<TViewModel> Find(Func<TModel, bool> predicate);
     }
 }
