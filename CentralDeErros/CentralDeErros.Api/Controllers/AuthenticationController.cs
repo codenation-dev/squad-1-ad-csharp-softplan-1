@@ -1,20 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
-using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
-using CentralDeErros.Application.Interfaces;
+﻿using CentralDeErros.Application.Interfaces;
 using CentralDeErros.Application.ViewModel;
 using CentralDeErros.Application.ViewModel.Authentication;
 using CentralDeErros.CrossCutting.Helpers;
 using CentralDeErros.CrossCutting.Utils;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using System;
+using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
+using System.Security.Claims;
+using System.Text;
 
 namespace CentralDeErros.Api.Controllers
 {
@@ -30,6 +27,7 @@ namespace CentralDeErros.Api.Controllers
             _userAppService = userAppService;
             _appSettings = appSettings.Value;
         }
+
         [AllowAnonymous]
         [HttpPost()]
         public ActionResult Post(LoginViewModel loginViewModel)
@@ -46,9 +44,6 @@ namespace CentralDeErros.Api.Controllers
                 return BadRequest("Usuário inativo.");
 
             user.AccessToken = GenerateJWT(user);
-
-
-
 
             return Ok(user);
         }
@@ -75,7 +70,5 @@ namespace CentralDeErros.Api.Controllers
             var token = tokenHandler.CreateToken(tokenDescriptor);
             return tokenHandler.WriteToken(token);
         }
-
-
     }
 }
