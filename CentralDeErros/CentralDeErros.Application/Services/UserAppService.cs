@@ -19,11 +19,5 @@ namespace CentralDeErros.Application.Services
         public UserAppService(IUserService service, IMapper mapper) : base(service, mapper)
         {
         }
-
-        public UserViewModel GetById(Guid id)
-        {
-            var model = _service.GetById(id);
-            return _mapper.Map<UserViewModel>(model);
-        }
     }
 }

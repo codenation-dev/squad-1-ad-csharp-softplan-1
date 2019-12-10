@@ -1,20 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using CentralDeErros.Application.Interfaces;
+using CentralDeErros.Application.ViewModel;
+using CentralDeErros.CrossCutting.Helpers;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
+using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
-using System.Threading.Tasks;
-using CentralDeErros.Application.Interfaces;
-using CentralDeErros.Application.ViewModel;
-using CentralDeErros.CrossCutting.Helpers;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
 
 namespace CentralDeErros.Api.Controllers.Base
 {
-
     public class BaseController : ControllerBase
     {
         private readonly IUserAppService _userAppService;
@@ -23,7 +19,6 @@ namespace CentralDeErros.Api.Controllers.Base
         public BaseController(IUserAppService userAppService)
         {
             _userAppService = userAppService;
-
             _appSettings = new AppSettings();
         }
 
@@ -54,8 +49,6 @@ namespace CentralDeErros.Api.Controllers.Base
 
             var token = tokenHandler.CreateToken(tokenDescriptor);
             return tokenHandler.WriteToken(token);
-
-
         }
     }
 }
