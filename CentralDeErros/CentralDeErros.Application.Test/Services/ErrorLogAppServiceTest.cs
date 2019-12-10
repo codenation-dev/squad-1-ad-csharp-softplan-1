@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using CentralDeErros.Application.Mapping;
 using CentralDeErros.Application.Services;
+using CentralDeErros.Application.ViewModel;
+using CentralDeErros.CrossCutting.CustomTypes;
 using CentralDeErros.Data.Context;
 using CentralDeErros.Data.Repositories;
 using CentralDeErros.Domain.Interfaces;
@@ -49,6 +51,31 @@ namespace CentralDeErros.Application.Test.Services
                     }
             )
         );
+        }
+
+        [Fact]
+        public void Should_Create_ErrorLog()
+        {
+            var service = new ErrorLogService(_repository);
+            var appService = new ErrorLogAppService(service, _mapper);
+
+            ErrorLogViewModel newErrorLog = new ErrorLogViewModel
+            {
+                Message = "New Error Message 10",
+                Archieved = false,
+                Code = "405",
+                Environment = ServerEnvironment.Test,
+                Level = "Low"
+            };
+
+            ErrorLogViewModel actual = appService.Add(newErrorLog);
+
+            Assert.NotNull(actual);
+            Assert.Equal(newErrorLog.Message, actual.Message);
+            Assert.Equal(newErrorLog.Archieved, actual.Archieved);
+            Assert.Equal(newErrorLog.Code, actual.Code);
+            Assert.Equal(newErrorLog.Environment, actual.Environment);
+            Assert.Equal(newErrorLog.Level, actual.Level);
         }
 
         [Fact]
