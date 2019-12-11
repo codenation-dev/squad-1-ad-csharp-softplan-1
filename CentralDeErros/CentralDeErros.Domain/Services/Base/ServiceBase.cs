@@ -1,4 +1,5 @@
 ﻿using CentralDeErros.Domain.Interfaces.Base;
+using CentralDeErros.Domain.Models;
 using CentralDeErros.Domain.Models.Base;
 using System;
 using System.Collections.Generic;
