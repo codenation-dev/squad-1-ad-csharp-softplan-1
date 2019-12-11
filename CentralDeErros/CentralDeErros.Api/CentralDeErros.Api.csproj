@@ -25,8 +25,4 @@
     <ProjectReference Include="..\CentralDeErros.Data\CentralDeErros.Data.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
 </Project>
