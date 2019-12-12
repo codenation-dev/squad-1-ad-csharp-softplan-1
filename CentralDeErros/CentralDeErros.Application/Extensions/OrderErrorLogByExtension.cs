@@ -1,20 +1,22 @@
 ﻿using CentralDeErros.Application.ViewModel;
+using CentralDeErros.CrossCutting.CustomTypes;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CentralDeErros.Api.GraphQL.Filters
+namespace CentralDeErros.Application.Extensions
 {
     public static class OrderErrorLogByExtension
     {
-        public static IList<ErrorLogViewModel> OrderErrorLogBy(this IEnumerable<ErrorLogViewModel> source, OrderByEnum.OrderBy orderBy)
+        public static IList<ErrorLogViewModel> OrderErrorLogBy(this IEnumerable<ErrorLogViewModel> source,
+            OrderErrorLogByField? orderBy)
         {
             switch (orderBy)
             {
-                case OrderByEnum.OrderBy.Code:
+                case OrderErrorLogByField.Code:
                     return source.OrderBy(p => p.Code).ToList();
-                case OrderByEnum.OrderBy.Level:
+                case OrderErrorLogByField.Level:
                     return source.OrderBy(p => p.Level).ToList();
-                case OrderByEnum.OrderBy.Message:
+                case OrderErrorLogByField.Message:
                     return source.OrderBy(p => p.Message).ToList();
                 default:
                     return source.ToList();

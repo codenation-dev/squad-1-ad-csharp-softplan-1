@@ -11,5 +11,6 @@ namespace CentralDeErros.Application.Interfaces.Base
         IList<TViewModel> GetAll();
         TViewModel Add(TViewModel obj);
         IList<TViewModel> Find(Func<TModel, bool> predicate);
+        void Remove(Guid id);
     }
 }

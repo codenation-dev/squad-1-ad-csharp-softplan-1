@@ -1,7 +1,7 @@
-﻿using CentralDeErros.Api.GraphQL.Filters;
-using CentralDeErros.Api.GraphQL.Types;
+﻿using CentralDeErros.Api.GraphQL.Types;
 using CentralDeErros.Application.Interfaces;
 using CentralDeErros.Application.ViewModel;
+using CentralDeErros.CrossCutting.CustomTypes;
 using GraphQL.Types;
 using System.Collections.Generic;
 using System.Security.Claims;
@@ -27,15 +27,10 @@ namespace CentralDeErros.Api.GraphQL
                 resolve: context =>
                 {
                     var user = (ClaimsPrincipal)context.UserContext;
-                    var orderBy = context.GetArgument<OrderByEnum.OrderBy?>("orderBy");
+                    var orderBy = context.GetArgument<OrderErrorLogByField?>("orderBy");
                     var filter = context.GetArgument<ErrorLogFilter?>("filter");
 
-                    IList<ErrorLogViewModel> errorLogs = errorLogAppService.GetAll();
-
-                    if (orderBy.HasValue)
-                        errorLogs = errorLogs.OrderErrorLogBy((OrderByEnum.OrderBy)orderBy);
-
-                    return errorLogs;
+                    return errorLogAppService.GetErrorLogs(filter, orderBy);
                 }
             );
         }

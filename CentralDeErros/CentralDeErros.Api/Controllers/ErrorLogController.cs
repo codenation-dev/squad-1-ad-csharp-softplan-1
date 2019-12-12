@@ -36,7 +36,7 @@ namespace CentralDeErros.Api.Controllers
             var log = _errorLogAppService.Find(e => e.Id == id);
             if (log.Count > 0)
             {
-                _errorLogAppService.DeleteErrorLog(id);
+                _errorLogAppService.Remove(id);
                 return Ok("Log de erro deletado com sucesso");
             }
             return NotFound("Log de erro não encontrado para o Id " + id);

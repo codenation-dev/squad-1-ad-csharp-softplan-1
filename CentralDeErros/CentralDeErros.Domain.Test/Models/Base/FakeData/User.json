@@ -1,0 +1,102 @@
+﻿[
+  {
+    "id": "943aa908-4d8c-41cf-883a-7d82e9bda241",
+    "CreatedAt": "24-02-2015",
+    "UpdatedAt": "13-09-2018",
+    "Name": "Maxwell Buchanan",
+    "Login": "Grace",
+    "Email": "gracebuchanan@pharmex.com",
+    "Password": "Daisy Dickson",
+    "Active": true
+  },
+  {
+    "id": "3d9d8b90-8d5a-4b85-93dd-0d7a8cbd97d5",
+    "CreatedAt": "21-10-2014",
+    "UpdatedAt": "02-03-2018",
+    "Name": "Owens Lester",
+    "Login": "Suarez",
+    "Email": "suarezlester@pharmex.com",
+    "Password": "Melissa Sawyer",
+    "Active": true
+  },
+  {
+    "id": "ab646ddb-00d6-4a58-afda-74ea56f9b643",
+    "CreatedAt": "04-12-2014",
+    "UpdatedAt": "07-08-2018",
+    "Name": "Bishop Juarez",
+    "Login": "Blevins",
+    "Email": "blevinsjuarez@pharmex.com",
+    "Password": "Short Ware",
+    "Active": true
+  },
+  {
+    "id": "3d8c7ceb-3132-46d9-b11a-2f28828de5c0",
+    "CreatedAt": "10-06-2014",
+    "UpdatedAt": "09-08-2018",
+    "Name": "Roy Blevins",
+    "Login": "Sonia",
+    "Email": "soniablevins@pharmex.com",
+    "Password": "Simone Rosales",
+    "Active": true
+  },
+  {
+    "id": "c8bfb57d-6ccc-462d-b576-c933e6323715",
+    "CreatedAt": "21-12-2015",
+    "UpdatedAt": "05-02-2018",
+    "Name": "Josefina Harrington",
+    "Login": "Faith",
+    "Email": "faithharrington@pharmex.com",
+    "Password": "Sharlene Vinson",
+    "Active": true
+  },
+  {
+    "id": "b70994e2-1dd7-4d0c-9344-d00ab2579296",
+    "CreatedAt": "15-03-2014",
+    "UpdatedAt": "22-04-2018",
+    "Name": "Wall Carroll",
+    "Login": "Ines",
+    "Email": "inescarroll@pharmex.com",
+    "Password": "Fern Burks",
+    "Active": true
+  },
+  {
+    "id": "c22ef643-547f-42b2-a08d-37e91159af8d",
+    "CreatedAt": "15-08-2015",
+    "UpdatedAt": "29-03-2018",
+    "Name": "Matthews Oconnor",
+    "Login": "Huffman",
+    "Email": "huffmanoconnor@pharmex.com",
+    "Password": "Thelma Snyder",
+    "Active": true
+  },
+  {
+    "id": "22fc3d4e-54cf-4c87-aa2f-350722c4ba2c",
+    "CreatedAt": "26-12-2015",
+    "UpdatedAt": "29-05-2018",
+    "Name": "Howard Shepherd",
+    "Login": "Wilda",
+    "Email": "wildashepherd@pharmex.com",
+    "Password": "Romero Pitts",
+    "Active": true
+  },
+  {
+    "id": "f7016322-be52-44d0-8b9c-001d45c44ceb",
+    "CreatedAt": "28-07-2014",
+    "UpdatedAt": "27-10-2018",
+    "Name": "Pate Lloyd",
+    "Login": "Austin",
+    "Email": "austinlloyd@pharmex.com",
+    "Password": "Jerri Holt",
+    "Active": true
+  },
+  {
+    "id": "d79a4d7e-a840-4837-bca7-bc56bd61070c",
+    "CreatedAt": "11-05-2016",
+    "UpdatedAt": "29-06-2018",
+    "Name": "Dorothea Walter",
+    "Login": "Dickson",
+    "Email": "dicksonwalter@pharmex.com",
+    "Password": "Ola Merrill",
+    "Active": true
+  }
+]

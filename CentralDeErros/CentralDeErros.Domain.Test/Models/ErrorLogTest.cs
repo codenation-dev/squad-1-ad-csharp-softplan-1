@@ -9,9 +9,9 @@ using Xunit;
 
 namespace CentralDeErros.Domain.Test.Models
 {
-    public sealed class UserModelTest : ModelBaseTest
+    public sealed class ErrorLogTest : ModelBaseTest
     {
-        public UserModelTest()
+        public ErrorLogTest()
             : base(new CentralDeErrosContext())
         {
             Model = "CentralDeErros.Domain.Models.ErrorLog";

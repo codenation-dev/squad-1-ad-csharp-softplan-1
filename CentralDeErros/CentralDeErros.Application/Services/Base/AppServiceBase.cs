@@ -40,5 +40,9 @@ namespace CentralDeErros.Application.Services.Base
             var model = _service.GetById(id);
             return _mapper.Map<TViewModel>(model);
         }
+        public void Remove(Guid id)
+        {
+            _service.Remove(id);
+        }
     }
 }
