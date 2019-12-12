@@ -31,10 +31,10 @@ namespace CentralDeErros.Domain.Test.Models
         [InlineData("Id", false, typeof(Guid), null)]
         [InlineData("CreatedAt", false, typeof(DateTime), null)]
         [InlineData("UpdatedAt", false, typeof(DateTime), null)]
-        [InlineData("Name", true, typeof(string), null)]
-        [InlineData("Login", true, typeof(string), null)]
-        [InlineData("Email", true, typeof(string), null)]
-        [InlineData("Password", true, typeof(string), null)]
+        [InlineData("Name", false, typeof(string), null)]
+        [InlineData("Login", false, typeof(string), null)]
+        [InlineData("Email", false, typeof(string), null)]
+        [InlineData("Password", false, typeof(string), null)]
         public void Should_Has_Field(string fieldName, bool isNullable, Type fieldType, int? fieldSize)
         {
             AssertField(fieldName, isNullable, fieldType, fieldSize);

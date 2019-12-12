@@ -26,6 +26,10 @@ obj
 msbuild.log
 msbuild.err
 msbuild.wrn
+code_coverage
+tools
 
 # Visual Studio 2015
 .vs
+*.trx
+CentralDeErros/CentralDeErros.CrossCutting/Scrypts/tools/Cake/LICENSE

@@ -45,7 +45,7 @@ namespace CentralDeErros.Data.Repositories.Base
 
         public void Remove(Guid id)
         {
-            _context.Set<TModel>().Remove( this.GetById(id));
+            _context.Set<TModel>().Remove(this.GetById(id));
             _context.SaveChanges();
         }
 

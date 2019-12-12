@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Cake.Coverlet" Version="2.3.4" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\CentralDeErros.CrossCutting\CentralDeErros.CrossCutting.csproj" />
   </ItemGroup>
 

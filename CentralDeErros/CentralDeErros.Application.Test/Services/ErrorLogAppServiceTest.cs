@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using CentralDeErros.Application.Mapping;
 using CentralDeErros.Application.Services;
+using CentralDeErros.Application.ViewModel;
+using CentralDeErros.CrossCutting.CustomTypes;
 using CentralDeErros.Data.Context;
 using CentralDeErros.Data.Repositories;
 using CentralDeErros.Domain.Interfaces;
@@ -34,7 +36,8 @@ namespace CentralDeErros.Application.Test.Services
             fakeDbSet.As<IQueryable<ErrorLog>>().Setup(x => x.Provider).Returns(fakeErrorLogs.Provider);
             fakeDbSet.As<IQueryable<ErrorLog>>().Setup(x => x.Expression).Returns(fakeErrorLogs.Expression);
             fakeDbSet.As<IQueryable<ErrorLog>>().Setup(x => x.ElementType).Returns(fakeErrorLogs.ElementType);
-            fakeDbSet.As<IQueryable<ErrorLog>>().Setup(x => x.GetEnumerator()).Returns(fakeErrorLogs.GetEnumerator()); 
+            fakeDbSet.As<IQueryable<ErrorLog>>().Setup(x => x.GetEnumerator()).Returns(fakeErrorLogs.GetEnumerator());
+            fakeDbSet.Setup(x => x.Remove(It.IsAny<ErrorLog>())).Callback<ErrorLog>((entity) => fakeData.Remove(entity));
 
             _fakeContext = new Mock<CentralDeErrosContext>();
             _fakeContext.Setup(m => m.Set<ErrorLog>()).Returns(fakeDbSet.Object);
@@ -49,6 +52,31 @@ namespace CentralDeErros.Application.Test.Services
                     }
             )
         );
+        }
+
+        [Fact]
+        public void Should_Create_ErrorLog()
+        {
+            var service = new ErrorLogService(_repository);
+            var appService = new ErrorLogAppService(service, _mapper);
+
+            ErrorLogViewModel newErrorLog = new ErrorLogViewModel
+            {
+                Message = "New Error Message 10",
+                Archieved = false,
+                Code = "405",
+                Environment = ServerEnvironment.Test,
+                Level = "Low"
+            };
+
+            ErrorLogViewModel actual = appService.Add(newErrorLog);
+
+            Assert.NotNull(actual);
+            Assert.Equal(newErrorLog.Message, actual.Message);
+            Assert.Equal(newErrorLog.Archieved, actual.Archieved);
+            Assert.Equal(newErrorLog.Code, actual.Code);
+            Assert.Equal(newErrorLog.Environment, actual.Environment);
+            Assert.Equal(newErrorLog.Level, actual.Level);
         }
 
         [Fact]
@@ -76,6 +104,30 @@ namespace CentralDeErros.Application.Test.Services
             
             Assert.NotNull(changed);
             Assert.True(changed.Archieved);
+        }
+
+        [Fact]
+        public void Should_Find_a_ErrorLog()
+        {
+            var service = new ErrorLogService(_repository);
+            var appService = new ErrorLogAppService(service, _mapper);
+
+            var actual = appService.Find(e => e.Message == fakeData[0].Message);
+            Assert.NotNull(actual);
+            Assert.Equal(fakeData[0].Message, actual.FirstOrDefault().Message);
+        }
+
+        [Fact]
+        public void Should_Delete_a_ErrorLog()
+        {
+            var service = new ErrorLogService(_repository);
+            var appService = new ErrorLogAppService(service, _mapper);
+            Guid guid = fakeData[0].Id;
+
+            Assert.Contains(fakeData[0], fakeData);
+            appService.Remove(guid);
+            var actual = appService.GetById(guid);
+            Assert.Null(actual);
         }
     }
 

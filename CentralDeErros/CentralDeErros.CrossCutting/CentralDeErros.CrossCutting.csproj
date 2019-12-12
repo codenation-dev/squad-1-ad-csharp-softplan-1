@@ -4,4 +4,12 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Scrypts\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Cake.Coverlet" Version="2.3.4" />
+  </ItemGroup>
+
 </Project>

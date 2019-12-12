@@ -6,6 +6,7 @@ using CentralDeErros.Data.Context;
 using CentralDeErros.Domain.Models;
 using CentralDeErros.Domain.Test.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 
 namespace CentralDeErros.Domain.Test.Models.Base
@@ -13,6 +14,7 @@ namespace CentralDeErros.Domain.Test.Models.Base
     public class FakeContext
     {
         public DbContextOptions<CentralDeErrosContext> FakeOptions { get; }
+        private readonly IConfiguration _configuration;
 
         private Dictionary<Type, string> DataFileNames { get; } =
             new Dictionary<Type, string>();
@@ -35,7 +37,7 @@ namespace CentralDeErros.Domain.Test.Models.Base
 
         public void FillWith<T>() where T : class
         {
-            using (var context = new CentralDeErrosContext(FakeOptions))
+            using (var context = new CentralDeErrosContext(FakeOptions, _configuration))
             {
                 if (context.Set<T>().Count() == 0)
                 {

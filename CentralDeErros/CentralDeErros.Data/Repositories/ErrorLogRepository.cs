@@ -10,7 +10,6 @@ namespace CentralDeErros.Data.Repositories
     {
         public ErrorLogRepository(CentralDeErrosContext context) : base(context)
         {
-
         }
     }
 }
