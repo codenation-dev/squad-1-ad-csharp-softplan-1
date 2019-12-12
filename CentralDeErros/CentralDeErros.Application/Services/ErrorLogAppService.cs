@@ -1,11 +1,13 @@
 ﻿using AutoMapper;
+using CentralDeErros.Application.Extensions;
 using CentralDeErros.Application.Interfaces;
 using CentralDeErros.Application.Services.Base;
 using CentralDeErros.Application.ViewModel;
+using CentralDeErros.CrossCutting.CustomTypes;
 using CentralDeErros.Domain.Interfaces.Services;
 using CentralDeErros.Domain.Models;
 using System;
-using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace CentralDeErros.Application.Services
 {
@@ -24,9 +26,10 @@ namespace CentralDeErros.Application.Services
             return _mapper.Map<ErrorLogViewModel>(_service.Update(errorLog));
         }
 
-        public void DeleteErrorLog(Guid id)
+        public IList<ErrorLogViewModel> GetErrorLogs(ErrorLogFilter? filter, OrderErrorLogByField? orderBy)
         {
-            _service.Remove(id);
+            Func<ErrorLog, bool> predicate = p => true;
+            return Find(predicate.FilterErrorLog(filter)).OrderErrorLogBy(orderBy);
         }
     }
 }

@@ -11,7 +11,7 @@ namespace CentralDeErros.Api.GraphQL.Types
             AddValue("Any", "Any", 0);
             AddValue("Code", "Code", 1);
             AddValue("Message", "Message", 2);
-            AddValue("Level", "Level", 2);
+            AddValue("Level", "Level", 3);
         }
     }
 }
