@@ -25,7 +25,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CentralDeErros.Domain.Test"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CentralDeErros.Application.Test", "CentralDeErros.Application.Test\CentralDeErros.Application.Test.csproj", "{DE5A0EF9-F832-49B7-BF36-E343D382E809}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CentralDeErros.CrossCutting.Test", "CentralDeErros.CrossCutting.Test\CentralDeErros.CrossCutting.Test.csproj", "{91ADB8B2-73F0-4193-A7CD-53ECAC160466}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CentralDeErros.CrossCutting.Test", "CentralDeErros.CrossCutting.Test\CentralDeErros.CrossCutting.Test.csproj", "{91ADB8B2-73F0-4193-A7CD-53ECAC160466}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
