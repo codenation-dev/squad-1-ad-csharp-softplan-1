@@ -34,6 +34,7 @@ namespace CentralDeErros.Application.Services.Base
         {
             return _mapper.Map<IList<TViewModel>>(_service.Find(predicate));
         }
+
         public TViewModel GetById(Guid id)
         {
             var model = _service.GetById(id);

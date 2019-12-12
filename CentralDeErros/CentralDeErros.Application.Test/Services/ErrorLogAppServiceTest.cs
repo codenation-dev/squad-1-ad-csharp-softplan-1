@@ -36,7 +36,8 @@ namespace CentralDeErros.Application.Test.Services
             fakeDbSet.As<IQueryable<ErrorLog>>().Setup(x => x.Provider).Returns(fakeErrorLogs.Provider);
             fakeDbSet.As<IQueryable<ErrorLog>>().Setup(x => x.Expression).Returns(fakeErrorLogs.Expression);
             fakeDbSet.As<IQueryable<ErrorLog>>().Setup(x => x.ElementType).Returns(fakeErrorLogs.ElementType);
-            fakeDbSet.As<IQueryable<ErrorLog>>().Setup(x => x.GetEnumerator()).Returns(fakeErrorLogs.GetEnumerator()); 
+            fakeDbSet.As<IQueryable<ErrorLog>>().Setup(x => x.GetEnumerator()).Returns(fakeErrorLogs.GetEnumerator());
+            fakeDbSet.Setup(x => x.Remove(It.IsAny<ErrorLog>())).Callback<ErrorLog>((entity) => fakeData.Remove(entity));
 
             _fakeContext = new Mock<CentralDeErrosContext>();
             _fakeContext.Setup(m => m.Set<ErrorLog>()).Returns(fakeDbSet.Object);
@@ -103,6 +104,30 @@ namespace CentralDeErros.Application.Test.Services
             
             Assert.NotNull(changed);
             Assert.True(changed.Archieved);
+        }
+
+        [Fact]
+        public void Should_Find_a_ErrorLog()
+        {
+            var service = new ErrorLogService(_repository);
+            var appService = new ErrorLogAppService(service, _mapper);
+
+            var actual = appService.Find(e => e.Message == fakeData[0].Message);
+            Assert.NotNull(actual);
+            Assert.Equal(fakeData[0].Message, actual.FirstOrDefault().Message);
+        }
+
+        [Fact]
+        public void Should_Delete_a_ErrorLog()
+        {
+            var service = new ErrorLogService(_repository);
+            var appService = new ErrorLogAppService(service, _mapper);
+            Guid guid = fakeData[0].Id;
+
+            Assert.Contains(fakeData[0], fakeData);
+            appService.DeleteErrorLog(guid);
+            var actual = appService.GetById(guid);
+            Assert.Null(actual);
         }
     }
 
