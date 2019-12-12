@@ -125,7 +125,7 @@ namespace CentralDeErros.Application.Test.Services
             Guid guid = fakeData[0].Id;
 
             Assert.Contains(fakeData[0], fakeData);
-            appService.DeleteErrorLog(guid);
+            appService.Remove(guid);
             var actual = appService.GetById(guid);
             Assert.Null(actual);
         }
