@@ -1,9 +1,7 @@
 ﻿using CentralDeErros.Domain.Interfaces.Base;
-using CentralDeErros.Domain.Models;
 using CentralDeErros.Domain.Models.Base;
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace CentralDeErros.Domain.Services.Base
 {
@@ -26,7 +24,7 @@ namespace CentralDeErros.Domain.Services.Base
 
         public IList<TModel> GetAll()
         {
-            return _repositoryBase.GetAll();
+            return _repositoryBase.GetAll(); 
         }
 
         public TModel GetById(Guid id)
