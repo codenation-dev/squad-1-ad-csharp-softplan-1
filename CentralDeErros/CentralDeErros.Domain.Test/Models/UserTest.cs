@@ -6,13 +6,13 @@ using Xunit;
 
 namespace CentralDeErros.Domain.Test.Models
 {
-    public sealed class ErrorLogTest : ModelBaseTest
+    public sealed class UserTest : ModelBaseTest
     {
-        public ErrorLogTest()
+        public UserTest()
             : base(new CentralDeErrosContext())
         {
-            Model = "CentralDeErros.Domain.Models.ErrorLog";
-            Table = "error_log";
+            Model = "CentralDeErros.Domain.Models.User";
+            Table = "user";
         }
 
         [Fact]
@@ -31,11 +31,10 @@ namespace CentralDeErros.Domain.Test.Models
         [InlineData("Id", false, typeof(Guid), null)]
         [InlineData("CreatedAt", false, typeof(DateTime), null)]
         [InlineData("UpdatedAt", false, typeof(DateTime), null)]
-        [InlineData("Code", true, typeof(string), null)]
-        [InlineData("Message", true, typeof(string), null)]
-        [InlineData("Level", true, typeof(string), null)]
-        [InlineData("Archieved", false, typeof(bool), null)]
-        [InlineData("Environment", false, typeof(ServerEnvironment), null)]
+        [InlineData("Name", true, typeof(string), null)]
+        [InlineData("Login", true, typeof(string), null)]
+        [InlineData("Email", true, typeof(string), null)]
+        [InlineData("Password", true, typeof(string), null)]
         public void Should_Has_Field(string fieldName, bool isNullable, Type fieldType, int? fieldSize)
         {
             AssertField(fieldName, isNullable, fieldType, fieldSize);

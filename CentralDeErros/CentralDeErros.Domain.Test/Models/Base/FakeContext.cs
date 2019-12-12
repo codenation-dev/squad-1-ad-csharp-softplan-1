@@ -25,7 +25,7 @@ namespace CentralDeErros.Domain.Test.Models.Base
                 .Options;
 
             DataFileNames.Add(typeof(ErrorLog), "FakeData\\ErrorLog.json");
-
+            DataFileNames.Add(typeof(ErrorLog), "FakeData\\User.json");
         }
 
         public void FillWithAll()
