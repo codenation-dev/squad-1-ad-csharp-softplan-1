@@ -21,6 +21,9 @@ namespace CentralDeErros.Application.Services
         public ErrorLogViewModel ArchieveErrorLog(Guid id)
         {
             var errorLog = _service.GetById(id);
+            if (errorLog == null)
+                return null;
+
             errorLog.Archieved = true;
 
             return _mapper.Map<ErrorLogViewModel>(_service.Update(errorLog));
