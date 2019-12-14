@@ -101,6 +101,7 @@ namespace CentralDeErros.Api.Controllers
         /// <response code="200">Retorna uma confirmação de que o log de erro foi deletado</response>
         /// <response code="404">Retorna uma mensagem de que o log de erro com o Guid passado não foi encontrado</response>
         [HttpDelete("{id}")]
+        [Authorize(Roles = UserRoles.ADMIN)]
         public ActionResult<ErrorLogViewModel> Delete(Guid id)
         {
             var log = _errorLogAppService.Find(e => e.Id == id);
