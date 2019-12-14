@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CentralDeErros.Api</name>
+    </assembly>
+    <members>
+        <member name="T:CentralDeErros.Api.Controllers.AuthenticationController">
+            <summary>
+            Controlador responsável pelo serviço de autenticação
+            </summary>
+        </member>
+        <member name="M:CentralDeErros.Api.Controllers.AuthenticationController.Post(CentralDeErros.Application.ViewModel.Authentication.LoginViewModel)">
+            <summary>
+            Endpoint de login do usuário
+            </summary>
+            <param name="loginViewModel"></param>
+            <returns>Um ActionResult</returns>
+            <response code="200">Usuário logado com sucesso</response>
+            <response code="400">Se as credenciais passadas não existirem, responde com um BadRequest e a mensagem "Usuário não cadastrado"</response>
+            <response code="400">Se a senha for inválida, responde com um BadRequest e a mensagem  "Senha inválida"</response>
+            <response code="400">Se o usuário estiver inativo, responde com um BadRequest e a mensagem "Usuário Inativo"</response>
+        </member>
+        <member name="T:CentralDeErros.Api.Controllers.ErrorLogController">
+            <summary>
+            Este endpoint expõe o CRUD para os logs de erro.
+            </summary>
+        </member>
+        <member name="M:CentralDeErros.Api.Controllers.ErrorLogController.Get">
+            <summary>
+            Retorna uma lista com todos os logs de erro
+            </summary>
+            <returns>Uma lista com todos os logs de erro</returns>
+            <response code="200">Retorna os view models dos logs de erro</response>        
+        </member>
+        <member name="M:CentralDeErros.Api.Controllers.ErrorLogController.Post(CentralDeErros.Application.ViewModel.ErrorLogViewModel)">
+            <summary>
+            Inclusão de um novo log de erro
+            </summary>
+            <returns>O log de erro salvo</returns>
+            <response code="200">Retorna o view model do log de erro salvo</response>
+        </member>
+        <member name="M:CentralDeErros.Api.Controllers.ErrorLogController.Delete(System.Guid)">
+            <summary>
+            Deleta o log de erro com o Guid passado
+            </summary>
+            <returns>O log de erro deletado</returns>
+            <response code="200">Retorna uma confirmação de que o log de erro foi deletado</response>
+            <response code="404">Retorna uma mensagem de que o log de erro com o Guid passado não foi encontrado</response>
+        </member>
+        <member name="M:CentralDeErros.Api.Controllers.RegistrationController.Post(CentralDeErros.Application.ViewModel.UserViewModel)">
+            <summary>
+            Realiza o cadastro de um novo usuário com base num View Model de usuário
+            </summary>
+            <param name="userViewModel"></param>
+            <returns>Um view model do usuário cadastrado</returns>
+            <response code="200">Retorna um view model do usuário que foi cadastrado</response>
+            <response code="204">Caso o usuário seja nulo, responde com NoContent</response>
+            <response code="400">Se o usuário passado já estiver cadastrado, resulta num BadRequest</response>
+        </member>
+    </members>
+</doc>

@@ -28,6 +28,8 @@ using System;
 using System.Text;
 using Swashbuckle.AspNetCore.Swagger;
 using Microsoft.OpenApi.Models;
+using System.Reflection;
+using System.IO;
 
 namespace CentralDeErros.Api
 {
@@ -63,7 +65,7 @@ namespace CentralDeErros.Api
 
             services.AddScoped<IDependencyResolver>(s => new FuncDependencyResolver(s.GetRequiredService));
             services.AddScoped<CentralDeErrosSchema>();
-            
+
             services.AddGraphQL(options =>
             {
                 options.ExposeExceptions = true; // it can't be true in production
@@ -89,7 +91,17 @@ namespace CentralDeErros.Api
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Title = "Central de Erros API",
+                    Version = "v1",
+                    Description = "Central de Erros da Squad 1 do AceleraDev C# Codenation",
+                    Contact = new OpenApiContact { Name = "Squad 1 - GitHub", Url = new Uri("https://github.com/codenation-dev/squad-1-ad-csharp-softplan-1") }
+                });
+
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
             });
         }
 
@@ -138,6 +150,7 @@ namespace CentralDeErros.Api
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -149,7 +162,7 @@ namespace CentralDeErros.Api
 
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Central de Erros V1");
             });
         }
     }
