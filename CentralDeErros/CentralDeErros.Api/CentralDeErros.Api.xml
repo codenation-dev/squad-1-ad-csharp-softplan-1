@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CentralDeErros.Api</name>
+    </assembly>
+    <members>
+        <member name="M:CentralDeErros.Api.Controllers.ErrorLogController.Get">
+            <summary>
+            Retorna uma lista com todos os logs de erro
+            </summary>
+            <returns>Uma lista com todos os logs de erro</returns>
+            <response code="200">Retorna os view models dos logs de erro</response>
+        </member>
+        <member name="M:CentralDeErros.Api.Controllers.ErrorLogController.Post(CentralDeErros.Application.ViewModel.ErrorLogViewModel)">
+            <summary>
+            Inclusão de um novo log de erro
+            </summary>
+            <returns>O log de erro salvo</returns>
+            <response code="200">Retorna o view model do log de erro salvo</response>
+        </member>
+        <member name="M:CentralDeErros.Api.Controllers.ErrorLogController.Delete(System.Guid)">
+            <summary>
+            Deleta o log de erro com o Guid passado
+            </summary>
+            <returns>O log de erro deletado</returns>
+            <response code="200">Retorna uma confirmação de que o log de erro foi deletado, ou que ele não foi encontrado</response>
+        </member>
+    </members>
+</doc>
