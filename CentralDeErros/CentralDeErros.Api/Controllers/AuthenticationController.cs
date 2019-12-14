@@ -15,6 +15,9 @@ using System.Text;
 
 namespace CentralDeErros.Api.Controllers
 {
+    /// <summary>
+    /// Controlador responsável pelo serviço de autenticação
+    /// </summary>
     [Route("api/login")]
     [ApiController]
     public class AuthenticationController : ControllerBase
@@ -28,6 +31,15 @@ namespace CentralDeErros.Api.Controllers
             _appSettings = appSettings.Value;
         }
 
+        /// <summary>
+        /// Endpoint de login do usuário
+        /// </summary>
+        /// <param name="loginViewModel"></param>
+        /// <returns>Um ActionResult</returns>
+        /// <response code="200">Usuário logado com sucesso</response>
+        /// <response code="400">Se as credenciais passadas não existirem, responde com um BadRequest e a mensagem "Usuário não cadastrado"</response>
+        /// <response code="400">Se a senha for inválida, responde com um BadRequest e a mensagem  "Senha inválida"</response>
+        /// <response code="400">Se o usuário estiver inativo, responde com um BadRequest e a mensagem "Usuário Inativo"</response>
         [AllowAnonymous]
         [HttpPost()]
         public ActionResult Post(LoginViewModel loginViewModel)
