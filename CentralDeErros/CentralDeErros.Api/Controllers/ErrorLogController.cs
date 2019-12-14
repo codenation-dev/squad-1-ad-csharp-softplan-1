@@ -10,6 +10,9 @@ using static System.Net.WebRequestMethods;
 
 namespace CentralDeErros.Api.Controllers
 {
+    /// <summary>
+    /// Este endpoint expõe o CRUD para os logs de erro.
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     [Authorize]
