@@ -8,6 +8,9 @@ namespace CentralDeErros.Application.Extensions
     {
         public static Func<ErrorLog, bool> FilterErrorLog(this Func<ErrorLog, bool> source, ErrorLogFilter filter)
         {
+            if (filter == null)
+                return p => true;
+
             Func<ErrorLog, bool> predicateCode = p => true;
             Func<ErrorLog, bool> predicateMessage = p => true;
             Func<ErrorLog, bool> predicateLevel = p => true;
