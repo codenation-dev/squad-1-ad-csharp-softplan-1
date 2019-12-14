@@ -1,6 +1,7 @@
 ﻿using CentralDeErros.Api.Controllers.Base;
 using CentralDeErros.Application.Interfaces;
 using CentralDeErros.Application.ViewModel;
+using CentralDeErros.CrossCutting.CustomTypes;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -31,6 +32,7 @@ namespace CentralDeErros.Api.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = UserRoles.ADMIN)]
         public ActionResult<ErrorLogViewModel> Delete(Guid id)
         {
             var log = _errorLogAppService.Find(e => e.Id == id);
