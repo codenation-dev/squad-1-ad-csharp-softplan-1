@@ -4,12 +4,17 @@
         <name>CentralDeErros.Api</name>
     </assembly>
     <members>
+        <member name="T:CentralDeErros.Api.Controllers.ErrorLogController">
+            <summary>
+            Este endpoint expõe o CRUD para os logs de erro.
+            </summary>
+        </member>
         <member name="M:CentralDeErros.Api.Controllers.ErrorLogController.Get">
             <summary>
             Retorna uma lista com todos os logs de erro
             </summary>
             <returns>Uma lista com todos os logs de erro</returns>
-            <response code="200">Retorna os view models dos logs de erro</response>
+            <response code="200">Retorna os view models dos logs de erro</response>        
         </member>
         <member name="M:CentralDeErros.Api.Controllers.ErrorLogController.Post(CentralDeErros.Application.ViewModel.ErrorLogViewModel)">
             <summary>
@@ -23,7 +28,8 @@
             Deleta o log de erro com o Guid passado
             </summary>
             <returns>O log de erro deletado</returns>
-            <response code="200">Retorna uma confirmação de que o log de erro foi deletado, ou que ele não foi encontrado</response>
+            <response code="200">Retorna uma confirmação de que o log de erro foi deletado</response>
+            <response code="404">Retorna uma mensagem de que o log de erro com o Guid passado não foi encontrado</response>
         </member>
     </members>
 </doc>
