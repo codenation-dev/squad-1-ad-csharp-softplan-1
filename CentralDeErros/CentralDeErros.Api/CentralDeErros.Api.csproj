@@ -4,6 +4,10 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\Users\Aure\Contacts\Documents\GitHub\central\squad-1-ad-csharp-softplan-1\CentralDeErros\CentralDeErros.Api\CentralDeErros.Api.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
     <PackageReference Include="Cake.Coverlet" Version="2.3.4" />

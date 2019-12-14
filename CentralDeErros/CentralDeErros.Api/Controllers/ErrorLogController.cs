@@ -17,19 +17,35 @@ namespace CentralDeErros.Api.Controllers
         {
             _errorLogAppService = errorLogAppService;
         }
-        
+
+        /// <summary>
+        /// Retorna uma lista com todos os logs de erro
+        /// </summary>
+        /// <returns>Uma lista com todos os logs de erro</returns>
+        /// <response code="200">Retorna os view models dos logs de erro</response>        
         [HttpGet]
         public ActionResult<ErrorLogViewModel> Get()
         {
             return Ok(_errorLogAppService.GetAll());
         }
 
+        /// <summary>
+        /// Inclusão de um novo log de erro
+        /// </summary>
+        /// <returns>O log de erro salvo</returns>
+        /// <response code="200">Retorna o view model do log de erro salvo</response>
         [HttpPost]
         public ActionResult<ErrorLogViewModel> Post([FromBody] ErrorLogViewModel errorLogViewModel)
         {
             return Ok(_errorLogAppService.Add(errorLogViewModel));
         }
 
+        /// <summary>
+        /// Deleta o log de erro com o Guid passado
+        /// </summary>
+        /// <returns>O log de erro deletado</returns>
+        /// <response code="200">Retorna uma confirmação de que o log de erro foi deletado</response>
+        /// <response code="404">Retorna uma mensagem de que o log de erro com o Guid passado não foi encontrado</response>
         [HttpDelete("{id}")]
         public ActionResult<ErrorLogViewModel> Delete(Guid id)
         {
