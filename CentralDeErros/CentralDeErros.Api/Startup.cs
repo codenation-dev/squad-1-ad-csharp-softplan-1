@@ -26,6 +26,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Text;
+using Swashbuckle.AspNetCore.Swagger;
+using Microsoft.OpenApi.Models;
 
 namespace CentralDeErros.Api
 {
@@ -38,7 +40,6 @@ namespace CentralDeErros.Api
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.Configure<AuditDatabaseSettings>(Configuration.GetSection(nameof(AuditDatabaseSettings)));
@@ -83,6 +84,13 @@ namespace CentralDeErros.Api
             services.AddControllers();
 
             services.AddCors();
+
+            services.AddMvc();
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
+            });
         }
 
         private void ConfigureAuth(IServiceCollection services)
@@ -135,6 +143,13 @@ namespace CentralDeErros.Api
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
             });
         }
     }

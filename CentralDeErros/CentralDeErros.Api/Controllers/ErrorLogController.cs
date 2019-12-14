@@ -3,6 +3,7 @@ using CentralDeErros.Application.Interfaces;
 using CentralDeErros.Application.ViewModel;
 using CentralDeErros.CrossCutting.CustomTypes;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using static System.Net.WebRequestMethods;
@@ -11,6 +12,7 @@ namespace CentralDeErros.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class ErrorLogController : BaseController
     {
         private readonly IErrorLogAppService _errorLogAppService;
@@ -18,7 +20,7 @@ namespace CentralDeErros.Api.Controllers
         {
             _errorLogAppService = errorLogAppService;
         }
-        // GET: api/ErrorLog
+        
         [HttpGet]
         public ActionResult<ErrorLogViewModel> Get()
         {
@@ -73,14 +75,12 @@ namespace CentralDeErros.Api.Controllers
             return Ok(_errorLogAppService.GetErrorLogs(filter, orderErrorLogBy));
         }
 
-        // POST: api/ErrorLog
         [HttpPost]
         public ActionResult<ErrorLogViewModel> Post([FromBody] ErrorLogViewModel errorLogViewModel)
         {
             return Ok(_errorLogAppService.Add(errorLogViewModel));
         }
 
-        // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
         public ActionResult<ErrorLogViewModel> Delete(Guid id)
         {
