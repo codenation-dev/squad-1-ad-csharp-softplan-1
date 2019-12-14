@@ -1,9 +1,12 @@
 ﻿using CentralDeErros.Api.Controllers.Base;
 using CentralDeErros.Application.Interfaces;
 using CentralDeErros.Application.ViewModel;
+using CentralDeErros.CrossCutting.CustomTypes;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using static System.Net.WebRequestMethods;
 
 namespace CentralDeErros.Api.Controllers
 {
@@ -26,7 +29,55 @@ namespace CentralDeErros.Api.Controllers
         [HttpGet]
         public ActionResult<ErrorLogViewModel> Get()
         {
-            return Ok(_errorLogAppService.GetAll());
+            var code = HttpContext.Request.Query["code"];
+            var message = HttpContext.Request.Query["message"];
+            var level = HttpContext.Request.Query["level"];
+            var archieved = HttpContext.Request.Query["archieved"];
+            var environment = HttpContext.Request.Query["environment"];
+            var orderby = HttpContext.Request.Query["orderby"];
+
+            ErrorLogFilter filter = new ErrorLogFilter();
+
+            if (code.Count > 0)
+                filter.Code = code;
+            if (message.Count > 0)
+                filter.Message = message;
+            if (level.Count > 0)
+                filter.Level = level;
+            if (archieved.Count > 0)
+                filter.Archieved = archieved == "true" ? true : false;
+
+            if (environment.Count > 0)
+            {
+                if (environment.ToString().ToLower() == "Unknown")
+                    filter.Environment = ServerEnvironment.Unknown;
+                else if (environment.ToString().ToLower() == "Development")
+                    filter.Environment = ServerEnvironment.Development;
+                else if (environment.ToString().ToLower() == "Test")
+                    filter.Environment = ServerEnvironment.Test;
+                else if (environment.ToString().ToLower() == "Acceptance")
+                    filter.Environment = ServerEnvironment.Acceptance;
+                else if (environment.ToString().ToLower() == "Production")
+                    filter.Environment = ServerEnvironment.Production;
+                else
+                    return BadRequest("Filtros informados são inválidos!");
+            }
+
+            OrderErrorLogByField orderErrorLogBy = OrderErrorLogByField.Any;
+
+            if (orderby.Count > 0)
+            {
+                if (orderby.ToString().ToLower() == "code")
+                    orderErrorLogBy = OrderErrorLogByField.Code;
+                else if (orderby.ToString().ToLower() == "level")
+                    orderErrorLogBy = OrderErrorLogByField.Level;
+                else if (orderby.ToString().ToLower() == "message")
+                    orderErrorLogBy = OrderErrorLogByField.Message;
+                else
+                    return BadRequest("Ordenação inválida!");
+            }
+
+            return Ok(_errorLogAppService.GetErrorLogs(filter, orderErrorLogBy));
         }
 
         /// <summary>
