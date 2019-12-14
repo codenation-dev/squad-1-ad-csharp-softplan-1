@@ -27,6 +27,7 @@ namespace CentralDeErros.Application.ViewModel
         public string Password { get; set; }
         public bool Active { get; set; }
         public string AccessToken { get; set; }
+        public string Role { get; set; }
 
     }
 }

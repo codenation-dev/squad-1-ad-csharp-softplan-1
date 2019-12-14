@@ -47,20 +47,20 @@ namespace CentralDeErros.Api.Controllers
             var user = _userAppService.Find(p => p.Login == loginViewModel.Login).FirstOrDefault();
 
             if (user == null)
-                return BadRequest("Usuário não cadastrado.");
+                return BadRequest("Incorrect user or password.");
 
             if (user.Password != loginViewModel.Password.ToHashMD5())
-                return BadRequest("Senha inválida.");
+                return BadRequest("Incorrect user or password.");
 
             if (!user.Active)
-                return BadRequest("Usuário inativo.");
+                return BadRequest("User inactive.");
 
             user.AccessToken = GenerateJWT(user);
 
             return Ok(user);
         }
 
-        private string GenerateJWT(UserViewModel usuario)
+        private string GenerateJWT(UserViewModel user)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_appSettings.SecretKeyJWT);
@@ -69,9 +69,10 @@ namespace CentralDeErros.Api.Controllers
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                    new Claim(ClaimTypes.Name, usuario.Name),
-                    new Claim(ClaimTypes.Email, usuario.Email),
-                    new Claim("id", usuario.Id.ToString()),
+                    new Claim(ClaimTypes.Name, user.Name),
+                    new Claim(ClaimTypes.Email, user.Email),
+                    new Claim("id", user.Id.ToString()),
+                    new Claim(ClaimTypes.Role, user.Role)
                 }),
 
                 Expires = DateTime.UtcNow.AddMinutes(30),

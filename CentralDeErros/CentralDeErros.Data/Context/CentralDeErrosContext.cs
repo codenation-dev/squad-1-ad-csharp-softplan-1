@@ -1,7 +1,10 @@
-﻿using CentralDeErros.Data.Config;
+﻿using CentralDeErros.CrossCutting.CustomTypes;
+using CentralDeErros.CrossCutting.Utils;
+using CentralDeErros.Data.Config;
 using CentralDeErros.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using System;
 
 namespace CentralDeErros.Data.Context
 {
@@ -35,6 +38,20 @@ namespace CentralDeErros.Data.Context
 
             //modelBuilder.ApplyConfiguration(new ErrorLogConfig());
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(CentralDeErrosContext).Assembly);
+            modelBuilder.Entity<User>().HasData(
+                    new User
+                    {
+                        Active = true,
+                        CreatedAt = DateTime.UtcNow,
+                        Email = "admin@centraldeerros.com",
+                        Id = Guid.NewGuid(),
+                        Login = "Admin",
+                        Name = "Administrator",
+                        Password = Utils.ToHashMD5("agesune1"),
+                        UpdatedAt = DateTime.UtcNow,
+                        Role = UserRoles.ADMIN
+                    }
+                );
         }
 
         internal string GetConnectionString()
