@@ -2,7 +2,9 @@
 using CentralDeErros.Application.Interfaces;
 using CentralDeErros.Application.ViewModel;
 using CentralDeErros.CrossCutting.Utils;
+using GraphQL;
 using GraphQL.Types;
+using System;
 
 namespace CentralDeErros.Api.GraphQL
 {
@@ -23,11 +25,33 @@ namespace CentralDeErros.Api.GraphQL
             Field<ErrorLogType>(
                 "archieveErrorLog",
                 arguments: new QueryArguments(
-                    new QueryArgument<NonNullGraphType<ArchieveErrorLogInputType>> { Name = "errorLog" }),
+                    new QueryArgument<NonNullGraphType<IdGraphType>> { Name = "idErrorLog" }),
                 resolve: context =>
                 {
-                    var errorLog = context.GetArgument<ErrorLogViewModel>("errorLog");
-                    return errorLogAppService.ArchieveErrorLog(errorLog.Id);
+                    var idErrorLog = context.GetArgument<Guid>("idErrorLog");
+                    if (errorLogAppService.GetById(idErrorLog) == null)
+                    {
+                        context.Errors.Add(new ExecutionError("Error log not found."));
+                        return null;
+                    }
+                    return errorLogAppService.ArchieveErrorLog(idErrorLog);
+                });
+
+            Field<StringGraphType>(
+                "deleteErrorLog",
+                arguments: new QueryArguments(
+                    new QueryArgument<NonNullGraphType<IdGraphType>> { Name = "idErrorLog" }),
+                resolve: context =>
+                {
+                    var idErrorLog = context.GetArgument<Guid>("idErrorLog");
+                    if (errorLogAppService.GetById(idErrorLog) == null)
+                    {
+                        context.Errors.Add(new ExecutionError("Error log not found."));
+                        return null;
+                    }
+
+                    errorLogAppService.Remove(idErrorLog);
+                    return "Error log has been deleted.";
                 });
 
             Field<UserType>(
@@ -40,7 +64,7 @@ namespace CentralDeErros.Api.GraphQL
                     user.Password = user.Password.ToHashMD5();
                     user.Active = true;
 
-                    //TODO: fazer os devidos tratamentos
+                    //TODO: fazer os devidos tratamentos 
                     return userAppService.Add(user);
                 });
         }
