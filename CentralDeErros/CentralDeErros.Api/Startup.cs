@@ -49,8 +49,7 @@ namespace CentralDeErros.Api
             services.AddSingleton<IAuditDatabaseSettings>(sp =>
                 sp.GetRequiredService<IOptions<AuditDatabaseSettings>>().Value);
 
-            services.AddDbContext<CentralDeErrosContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<CentralDeErrosContext>();        
 
             services.AddScoped<IErrorLogService, ErrorLogService>();
             services.AddScoped<IErrorLogAppService, ErrorLogAppService>();
