@@ -47,13 +47,13 @@ namespace CentralDeErros.Api.Controllers
             var user = _userAppService.Find(p => p.Login == loginViewModel.Login).FirstOrDefault();
 
             if (user == null)
-                return BadRequest("Incorrect user or password.");
+                return BadRequest("Usuário ou senha incorreto.");
 
             if (user.Password != loginViewModel.Password.ToHashMD5())
-                return BadRequest("Incorrect user or password.");
+                return BadRequest("Usuário ou senha incorreto.");
 
             if (!user.Active)
-                return BadRequest("User inactive.");
+                return BadRequest("Usuário inativo.");
 
             user.AccessToken = GenerateJWT(user);
 

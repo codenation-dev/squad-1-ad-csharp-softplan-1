@@ -7,11 +7,12 @@ namespace CentralDeErros.Api.GraphQL.Types
     {
         public ErrorLogType()
         {
-            Field(e => e.Id, type:typeof(IdGraphType));
-            Field(e => e.Code);
-            Field(e => e.Message);
-            Field(e => e.Level);
-            Field(e => e.Archieved);
+            Description = "Objeto que representa um log de erro.";
+            Field(e => e.Id, type:typeof(IdGraphType)).Description("Identificação do erro. Gerado automático.");
+            Field(e => e.Code).Description("Código de erro.");
+            Field(e => e.Message).Description("Mensagem do erro.");
+            Field(e => e.Level).Description("Level do erro.");
+            Field(e => e.Archieved).Description("Indica se o log de erro está arquivado.");
             Field<EnvironmentType>("Environment", resolve: e => e.Source.Environment);
         }
     }
