@@ -65,6 +65,14 @@ namespace CentralDeErros.Api.GraphQL
                 resolve: context =>
                 {
                     var user = context.GetArgument<UserViewModel>("user");
+                    
+                    if (user.Email == null || user.Login == null
+                        || user.Name == null || user.Password == null)
+                    {
+                        context.Errors.Add(new ExecutionError("Campos obrigatórios não informados."));
+                        return null;
+                    }
+                    
                     user.Password = user.Password.ToHashMD5();
                     user.Active = true;
 
