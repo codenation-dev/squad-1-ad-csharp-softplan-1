@@ -34,9 +34,10 @@ namespace CentralDeErros.Domain.Test.Models
         [InlineData("Id", false, typeof(Guid), null)]
         [InlineData("CreatedAt", false, typeof(DateTime), null)]
         [InlineData("UpdatedAt", false, typeof(DateTime), null)]
-        [InlineData("Code", true, typeof(string), null)]
-        [InlineData("Message", true, typeof(string), null)]
-        [InlineData("Level", true, typeof(string), null)]
+        [InlineData("Code", false, typeof(string), null)]
+        [InlineData("Message", false, typeof(string), null)]
+        [InlineData("Origin", false, typeof(string), null)]
+        [InlineData("Level", false, typeof(string), null)]
         [InlineData("Archieved", false, typeof(bool), null)]
         [InlineData("Environment", false, typeof(ServerEnvironment), null)]
         public void Should_Has_Field(string fieldName, bool isNullable, Type fieldType, int? fieldSize)
