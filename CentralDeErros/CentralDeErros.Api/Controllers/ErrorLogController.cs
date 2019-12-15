@@ -2,11 +2,10 @@
 using CentralDeErros.Application.Interfaces;
 using CentralDeErros.Application.ViewModel;
 using CentralDeErros.CrossCutting.CustomTypes;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using static System.Net.WebRequestMethods;
 
 namespace CentralDeErros.Api.Controllers
 {

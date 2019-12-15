@@ -14,6 +14,7 @@ namespace CentralDeErros.Api.GraphQL
         {
             Field<ErrorLogType>(
                 "addErrorLog",
+                description: "Mutation utilizada para adicionar logs de erro.",
                 arguments: new QueryArguments(
                     new QueryArgument<NonNullGraphType<ErrorLogInputType>> { Name = "errorLog" }),
                 resolve: context =>
@@ -24,6 +25,7 @@ namespace CentralDeErros.Api.GraphQL
 
             Field<ErrorLogType>(
                 "archieveErrorLog",
+                description: "Mutation utilizada para arquivar logs de erro.",
                 arguments: new QueryArguments(
                     new QueryArgument<NonNullGraphType<IdGraphType>> { Name = "idErrorLog" }),
                 resolve: context =>
@@ -39,6 +41,7 @@ namespace CentralDeErros.Api.GraphQL
 
             Field<StringGraphType>(
                 "deleteErrorLog",
+                description: "Mutation utilizada para deletar logs de erro.",
                 arguments: new QueryArguments(
                     new QueryArgument<NonNullGraphType<IdGraphType>> { Name = "idErrorLog" }),
                 resolve: context =>
@@ -56,6 +59,7 @@ namespace CentralDeErros.Api.GraphQL
 
             Field<UserType>(
                 "addUser",
+                description: "Mutation utilizada para adicionar usuários.",
                 arguments: new QueryArguments(
                     new QueryArgument<NonNullGraphType<UserInputType>> { Name = "user" }),
                 resolve: context =>

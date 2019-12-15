@@ -14,6 +14,7 @@ namespace CentralDeErros.Api.GraphQL
         {
             Field<ListGraphType<ErrorLogType>>(
                 "errorlogs",
+                description: "Query utilizada para consultar os logs de erro.",
                 arguments: new QueryArguments(new List<QueryArgument>
                 {
                     new QueryArgument<ErrorLogFilterInputType>
