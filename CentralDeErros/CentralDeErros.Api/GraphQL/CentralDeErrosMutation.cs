@@ -68,7 +68,7 @@ namespace CentralDeErros.Api.GraphQL
                 {
                     var user = context.GetArgument<UserViewModel>("user");
                     
-                    if (user.Email == null || user.Login == null
+                    if (user.Email == null || user.Login == null || user.Role == null
                         || user.Name == null || user.Password == null)
                     {
                         context.Errors.Add(new ExecutionError("Campos obrigatórios não informados."));

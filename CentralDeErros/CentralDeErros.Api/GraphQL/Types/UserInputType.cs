@@ -12,6 +12,7 @@ namespace CentralDeErros.Api.GraphQL.Types
             Field<StringGraphType>("name");
             Field<StringGraphType>("email");
             Field<StringGraphType>("password");
+            Field<StringGraphType>("role");
             Field<BooleanGraphType>("active");
         }
     }
