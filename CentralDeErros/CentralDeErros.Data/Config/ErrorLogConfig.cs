@@ -13,6 +13,7 @@ namespace CentralDeErros.Data.Config
             builder.Property(p => p.Code).IsRequired().HasMaxLength(100);
             builder.Property(p => p.Environment).IsRequired();
             builder.Property(p => p.Level).IsRequired().HasMaxLength(100);
+            builder.Property(p => p.Message).IsRequired().HasMaxLength(100);
             builder.Property(p => p.Archieved).IsRequired();
             builder.Property(p => p.Origin).IsRequired().HasMaxLength(100);
         }
