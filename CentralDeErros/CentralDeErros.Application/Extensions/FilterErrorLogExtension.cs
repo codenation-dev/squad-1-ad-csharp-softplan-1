@@ -15,6 +15,7 @@ namespace CentralDeErros.Application.Extensions
             Func<ErrorLog, bool> predicateMessage = p => true;
             Func<ErrorLog, bool> predicateLevel = p => true;
             Func<ErrorLog, bool> predicateArchieved = p => true;
+            Func<ErrorLog, bool> predicateOrigin = p => true;
             Func<ErrorLog, bool> predicateEnvironment = p => true;
 
             if (filter.Code != null)
@@ -23,16 +24,16 @@ namespace CentralDeErros.Application.Extensions
                 predicateMessage = p => p.Message == filter.Message;
             if (filter.Level != null)
                 predicateLevel = p => p.Level == filter.Level;
+            if (filter.Origin != null)
+                predicateLevel = p => p.Origin == filter.Origin;
             if (filter.Archieved != null)
                 predicateArchieved = p => p.Archieved == filter.Archieved;
             if (filter.Environment != null)
                 predicateEnvironment = p => p.Environment == filter.Environment;
 
-            return p => predicateCode(p) &&
-                             predicateMessage(p) &&
-                             predicateLevel(p) &&
-                             predicateArchieved(p) &&
-                             predicateEnvironment(p);
+            return p => predicateCode(p) && predicateMessage(p) &&
+                        predicateLevel(p) && predicateArchieved(p) &&
+                        predicateEnvironment(p) && predicateOrigin(p);
         }
     }
 }

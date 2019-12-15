@@ -35,6 +35,7 @@ namespace CentralDeErros.Api.Controllers
             var message = HttpContext.Request.Query["message"];
             var level = HttpContext.Request.Query["level"];
             var archieved = HttpContext.Request.Query["archieved"];
+            var origin = HttpContext.Request.Query["origin"];
             var environment = HttpContext.Request.Query["environment"];
             var orderby = HttpContext.Request.Query["orderby"];
 
@@ -46,6 +47,8 @@ namespace CentralDeErros.Api.Controllers
                 filter.Message = message;
             if (level.Count > 0)
                 filter.Level = level;
+            if (origin.Count > 0)
+                filter.Origin = origin;
             if (archieved.Count > 0)
                 filter.Archieved = archieved == "true" ? true : false;
 
