@@ -13,6 +13,7 @@ namespace CentralDeErros.Api.GraphQL.Types
             Field(p => p.Name).Description("Nome do usuário.");
             Field(p => p.Email).Description("E-mail do usuário.");
             Field(p => p.Active).Description("Informa se o usuário está ativo.");
+            Field(p => p.Role).Description("Informa a Role do usuário.");
         }
     }
 }

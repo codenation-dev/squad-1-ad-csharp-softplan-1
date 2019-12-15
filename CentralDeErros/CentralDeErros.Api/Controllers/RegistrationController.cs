@@ -33,6 +33,10 @@ namespace CentralDeErros.Api.Controllers
             if (userViewModel == null)
                 return NoContent();
 
+            if (userViewModel.Email == null || userViewModel.Login == null || userViewModel.Role == null
+                || userViewModel.Name == null || userViewModel.Password == null)
+                return BadRequest("Campos obrigatórios não informados.");
+
             var userVerification = _userAppService.Find(p => (p.Email == userViewModel.Email) || (p.Login == userViewModel.Login));
 
             if (userVerification.Count > 0)
