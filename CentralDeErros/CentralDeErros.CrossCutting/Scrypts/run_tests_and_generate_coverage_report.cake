@@ -6,9 +6,11 @@ var target = Argument("target", "Report");
 /*  Specify the relative paths to your tests projects here. */
 var testProjectsRelativePaths = new string[]
 {
+    "../../CentralDeErros.Api.Test/CentralDeErros.Api.Test.csproj"
     "../../CentralDeErros.Application.Test/CentralDeErros.Application.Test.csproj",
+    "../../CentralDeErros.Domain.Test/CentralDeErros.Domain.Test.csproj",
     "../../CentralDeErros.CrossCutting.Test/CentralDeErros.CrossCutting.Test.csproj",
-    "../../CentralDeErros.Domain.Test/CentralDeErros.Domain.Test.csproj"
+    "../../CentralDeErros.Data.Test/CentralDeErros.Data.Test.csproj"
 };
 
 /*  Change the output artifacts and their configuration here. */

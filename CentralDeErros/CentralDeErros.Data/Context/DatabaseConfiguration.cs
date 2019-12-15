@@ -29,8 +29,11 @@ namespace CentralDeErros.Data.Context
                 case DatabaseType.SQLServer:
                     _optionsBuilder.UseSqlServer(GetConnectionString(databaseType));
                     break;
+                case DatabaseType.LocalDB:
+                    _optionsBuilder.UseSqlServer(GetConnectionString(databaseType));
+                    break;
                 default:
-                    _optionsBuilder.UseSqlServer(_configuration.GetConnectionString(ConfigurationConst.DefaultConnection));
+                    _optionsBuilder.UseSqlServer(GetConnectionString(DatabaseType.LocalDB));
                     break;
             }
         }
