@@ -4,6 +4,7 @@ using CentralDeErros.Data.Config;
 using CentralDeErros.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Npgsql;
 using System;
 
 namespace CentralDeErros.Data.Context
@@ -29,14 +30,13 @@ namespace CentralDeErros.Data.Context
             base.OnConfiguring(optionsBuilder);
 
             if (!optionsBuilder.IsConfigured)
-                optionsBuilder.UseSqlServer(GetConnectionString());
+                optionsBuilder.ConfigureConnection(_configuration);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            //modelBuilder.ApplyConfiguration(new ErrorLogConfig());
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(CentralDeErrosContext).Assembly);
             modelBuilder.Entity<User>().HasData(
                     new User
@@ -52,16 +52,6 @@ namespace CentralDeErros.Data.Context
                         Role = UserRoles.ADMIN
                     }
                 );
-        }
-
-        internal string GetConnectionString()
-        {
-            string connectionString = _configuration.GetConnectionString("DefaultConnection");
-            if (connectionString == null)
-            {
-                connectionString = "Server = (localdb)\\mssqllocaldb; Database = CentralDeErrosDb; Trusted_Connection = True; MultipleActiveResultSets = true";
-            }
-            return connectionString;
         }
     }
 }
