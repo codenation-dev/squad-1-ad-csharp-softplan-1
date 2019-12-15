@@ -5,7 +5,11 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>..\CentralDeErros.Api\CentralDeErros.Api.xml</DocumentationFile>
+    <DocumentationFile>..\CentralDeErros.Api\Swagger\CentralDeErros.Api.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>..\CentralDeErros.Api\Swagger\CentralDeErros.Api.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
