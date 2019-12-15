@@ -1,0 +1,9 @@
+language: csharp
+solution: ./CentralDeErros/CentralDeErros.sln
+mono: latest
+dotnet: 3.0.100
+
+script:
+ - dotnet build ./CentralDeErros/CentralDeErros.sln
+ - dotnet test ./CentralDeErros/CentralDeErros.Application.Test/CentralDeErros.Application.Test.csproj
+ - dotnet test ./CentralDeErros/CentralDeErros.Domain.Test/CentralDeErros.Domain.Test.csproj /p:CollectCoverage=true
