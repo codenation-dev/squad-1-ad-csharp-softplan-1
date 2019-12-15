@@ -20,6 +20,7 @@ namespace CentralDeErros.Api.GraphQL
                 resolve: context =>
                 {
                     var errorLog = context.GetArgument<ErrorLogViewModel>("errorLog");
+
                     return errorLogAppService.Add(errorLog);
                 });
 
@@ -31,9 +32,10 @@ namespace CentralDeErros.Api.GraphQL
                 resolve: context =>
                 {
                     var idErrorLog = context.GetArgument<Guid>("idErrorLog");
+
                     if (errorLogAppService.GetById(idErrorLog) == null)
                     {
-                        context.Errors.Add(new ExecutionError("Error log not found."));
+                        context.Errors.Add(new ExecutionError("Log de erro não encontrado."));
                         return null;
                     }
                     return errorLogAppService.ArchieveErrorLog(idErrorLog);
@@ -49,12 +51,12 @@ namespace CentralDeErros.Api.GraphQL
                     var idErrorLog = context.GetArgument<Guid>("idErrorLog");
                     if (errorLogAppService.GetById(idErrorLog) == null)
                     {
-                        context.Errors.Add(new ExecutionError("Error log not found."));
+                        context.Errors.Add(new ExecutionError("Log de erro não encontrado."));
                         return null;
                     }
 
                     errorLogAppService.Remove(idErrorLog);
-                    return "Error log has been deleted.";
+                    return "Log de erro deletado com sucesso.";
                 });
 
             Field<UserType>(
@@ -80,7 +82,7 @@ namespace CentralDeErros.Api.GraphQL
 
                     if (userAlreadyRegistered)
                     {
-                        context.Errors.Add(new ExecutionError("User is already registered."));
+                        context.Errors.Add(new ExecutionError("Usuário já cadastrado."));
                         return null;
                     }
                 
