@@ -64,7 +64,14 @@ namespace CentralDeErros.Api.GraphQL
                     user.Password = user.Password.ToHashMD5();
                     user.Active = true;
 
-                    //TODO: fazer os devidos tratamentos 
+                    var userAlreadyRegistered = userAppService.Find(p => (p.Email == user.Email) || (p.Login == user.Login)).Count > 0;
+
+                    if (userAlreadyRegistered)
+                    {
+                        context.Errors.Add(new ExecutionError("User is already registered."));
+                        return null;
+                    }
+                
                     return userAppService.Add(user);
                 });
         }
