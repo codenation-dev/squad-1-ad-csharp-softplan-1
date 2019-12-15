@@ -37,8 +37,8 @@ namespace CentralDeErros.Data.Context
 
         private DatabaseType GetDatabaseType()
         {
-            DatabaseType databaseType = _configuration.GetConnectionString(ConfigurationConst.DefaultDatabase).ToDatabaseType();
-            return databaseType == DatabaseType.Unknow ? Environment.GetEnvironmentVariable(ConfigurationConst.DefaultDatabase).ToDatabaseType() : databaseType;
+            DatabaseType databaseType = _configuration.GetConnectionString(ConfigurationConst.DatabaseType).ToDatabaseType();
+            return databaseType == DatabaseType.Unknow ? Environment.GetEnvironmentVariable(ConfigurationConst.DatabaseType).ToDatabaseType() : databaseType;
         }
 
         private string GetConnectionString(DatabaseType databaseType = DatabaseType.LocalDB)
@@ -56,6 +56,11 @@ namespace CentralDeErros.Data.Context
             if (Environment.GetEnvironmentVariable(ConfigurationConst.ConnectionString) != null)
             {
                 return Environment.GetEnvironmentVariable("ConfigurationConst.ConnectionString");
+            }
+
+            if (_configuration.GetConnectionString(ConfigurationConst.DefaultConnection) != null)
+            {
+                return _configuration.GetConnectionString(ConfigurationConst.DefaultConnection);
             }
 
             throw new DatabaseConnectionStringException("Connection string not found.");
