@@ -15,11 +15,11 @@ jobs:
         dotnet-version: 3.0.100
     - name: Build with dotnet
       run: dotnet build ./CentralDeErros/CentralDeErros.sln
-    - name: Domain Unit test
+    - name: Unit test - Domain
       run: dotnet test ./CentralDeErros/CentralDeErros.Domain.Test/CentralDeErros.Domain.Test.csproj /p:CollectCoverage=true
-    - name: CrossCutting Unit test
+    - name: Unit test - CrossCutting
       run: dotnet test ./CentralDeErros/CentralDeErros.CrossCutting.Test/CentralDeErros.CrossCutting.Test.csproj /p:CollectCoverage=true
-    - name: Data Unit test
+    - name: Unit test - Data
       run: dotnet test ./CentralDeErros/CentralDeErros.Data.Test/CentralDeErros.Data.Test.csproj /p:CollectCoverage=true
-    - name: Api Unit test
+    - name: Unit test - Api
       run: dotnet test ./CentralDeErros/CentralDeErros.Api.Test/CentralDeErros.Api.Test.csproj /p:CollectCoverage=true
