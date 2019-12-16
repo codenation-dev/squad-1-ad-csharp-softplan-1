@@ -42,7 +42,7 @@ namespace CentralDeErros.Api.Controllers
         /// <response code="400">Se o usuário estiver inativo, responde com um BadRequest e a mensagem "Usuário Inativo"</response>
         [AllowAnonymous]
         [HttpPost()]
-        public ActionResult Post(LoginViewModel loginViewModel)
+        public ActionResult<UserViewModel> Post(LoginViewModel loginViewModel)
         {
             var user = _userAppService.Find(p => p.Login == loginViewModel.Login).FirstOrDefault();
 

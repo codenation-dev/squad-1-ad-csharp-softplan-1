@@ -40,16 +40,20 @@ namespace CentralDeErros.Api
             Configuration = configuration;
         }
 
+        public Startup()
+        {
+        }
+
         public IConfiguration Configuration { get; }
 
-        public void ConfigureServices(IServiceCollection services)
+        public virtual void ConfigureServices(IServiceCollection services)
         {
             services.Configure<AuditDatabaseSettings>(Configuration.GetSection(nameof(AuditDatabaseSettings)));
 
             services.AddSingleton<IAuditDatabaseSettings>(sp =>
                 sp.GetRequiredService<IOptions<AuditDatabaseSettings>>().Value);
 
-            services.AddDbContext<CentralDeErrosContext>();        
+            AddServiceDbContext(services);
 
             services.AddScoped<IErrorLogService, ErrorLogService>();
             services.AddScoped<IErrorLogAppService, ErrorLogAppService>();
@@ -104,7 +108,12 @@ namespace CentralDeErros.Api
             });
         }
 
-        private void ConfigureAuth(IServiceCollection services)
+        protected virtual void AddServiceDbContext(IServiceCollection services)
+        {
+            services.AddDbContext<CentralDeErrosContext>();
+        }
+
+        protected virtual void ConfigureAuth(IServiceCollection services)
         {
             var appSettingsSection = Configuration.GetSection("AppSettings");
             services.Configure<AppSettings>(appSettingsSection);
@@ -135,7 +144,7 @@ namespace CentralDeErros.Api
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public virtual void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
