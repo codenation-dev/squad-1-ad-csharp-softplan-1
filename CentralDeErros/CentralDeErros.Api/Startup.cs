@@ -30,6 +30,7 @@ using Swashbuckle.AspNetCore.Swagger;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 using System.IO;
+using Swashbuckle.AspNetCore.Filters;
 
 namespace CentralDeErros.Api
 {
@@ -97,6 +98,15 @@ namespace CentralDeErros.Api
                     Description = "Central de Erros da Squad 1 do AceleraDev C# Codenation",
                     Contact = new OpenApiContact { Name = "Squad 1 - GitHub", Url = new Uri("https://github.com/codenation-dev/squad-1-ad-csharp-softplan-1") }
                 });
+
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    Description = "JWT Authorization header usando Bearer scheme. Exemplo: \"Authorization: Bearer {token}\"",
+                    Name = "Authorization",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.ApiKey
+                });
+                c.OperationFilter<SecurityRequirementsOperationFilter>();
 
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
