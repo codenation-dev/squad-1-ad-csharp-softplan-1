@@ -41,16 +41,10 @@ namespace CentralDeErros.Api.Controllers
             if (userVerification.Count > 0)
                 return BadRequest("Usuário já cadastrado");
 
-            var userview = new UserViewModel()
-            {
-                Name = userViewModel.Name,
-                Email = userViewModel.Email,
-                Login = userViewModel.Login,
-                Password = userViewModel.Password.ToHashMD5(),
-                Active = true
-            };
+            userViewModel.Password = userViewModel.Password.ToHashMD5();
+            userViewModel.Active = true;
 
-            return Ok(_userAppService.Add(userview));
+            return Ok(_userAppService.Add(userViewModel));
         }
     }
 }
