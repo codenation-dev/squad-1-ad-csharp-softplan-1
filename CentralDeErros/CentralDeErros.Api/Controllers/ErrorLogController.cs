@@ -27,7 +27,7 @@ namespace CentralDeErros.Api.Controllers
         /// Retorna uma lista com todos os logs de erro
         /// </summary>
         /// <returns>Uma lista com todos os logs de erro</returns>
-        /// <response code="200">Retorna os view models dos logs de erro</response>        
+        /// <response code="200">Retorna os view models dos logs de erro</response> 
         [HttpGet]
         public ActionResult<ErrorLogViewModel> Get()
         {

@@ -30,7 +30,7 @@
             Retorna uma lista com todos os logs de erro
             </summary>
             <returns>Uma lista com todos os logs de erro</returns>
-            <response code="200">Retorna os view models dos logs de erro</response>        
+            <response code="200">Retorna os view models dos logs de erro</response> 
         </member>
         <member name="M:CentralDeErros.Api.Controllers.ErrorLogController.GetById(System.Guid)">
             <summary>
