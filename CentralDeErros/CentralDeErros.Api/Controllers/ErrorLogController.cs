@@ -132,5 +132,23 @@ namespace CentralDeErros.Api.Controllers
             }
             return NotFound("Log de erro não encontrado para o Id " + id);
         }
+
+        /// <summary>
+        /// Arquiva o log de erro com o Guid passado
+        /// </summary>
+        /// <returns>O log de erro arquivado</returns>
+        /// <response code="200">Retorna uma confirmação de que o log de erro foi arquivado</response>
+        /// <response code="404">Retorna uma mensagem de que o log de erro com o Guid passado não foi encontrado</response>
+        [HttpPut("archive/{id}")]
+        [Authorize(Roles = UserRoles.ADMIN)]
+        public ActionResult<ErrorLogViewModel> Archive(Guid id)
+        { 
+            var log = _errorLogAppService.Find(e => e.Id == id);
+            if (log.Count > 0)
+            {
+                return Ok(_errorLogAppService.ArchieveErrorLog(id));
+            }
+            return NotFound("Log de erro não encontrado para o Id " + id);
+        }
     }
 }
