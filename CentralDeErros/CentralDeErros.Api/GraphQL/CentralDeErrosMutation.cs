@@ -5,9 +5,11 @@ using CentralDeErros.CrossCutting.Utils;
 using GraphQL;
 using GraphQL.Types;
 using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace CentralDeErros.Api.GraphQL
 {
+    [ExcludeFromCodeCoverage]
     public class CentralDeErrosMutation : ObjectGraphType
     {
         public CentralDeErrosMutation(IErrorLogAppService errorLogAppService, IUserAppService userAppService)

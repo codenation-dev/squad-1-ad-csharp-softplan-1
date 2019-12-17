@@ -1,4 +1,8 @@
-﻿using CentralDeErros.Application.ViewModel;
+﻿using CentralDeErros.Api.Controllers.Base;
+using CentralDeErros.Application.Interfaces;
+using CentralDeErros.Application.Services;
+using CentralDeErros.Application.ViewModel;
+using CentralDeErros.Application.ViewModel.Authentication;
 using Newtonsoft.Json;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -33,6 +37,19 @@ namespace CentralDeErros.Api.Test.Controllers.Base
             string json = JsonConvert.SerializeObject(user);
 
             var response = await _client.PostAsJsonAsync("/api/Registration", new StringContent(json, Encoding.UTF8, "application/json"));
+            return await response.Content.ReadAsAsync<UserViewModel>();
+        }
+
+        protected async Task<UserViewModel> GetAuthorizedUser()
+        {
+            LoginViewModel loginViewModel = new LoginViewModel
+            {
+                Login = "Admin",
+                Password = "agesune1"
+            };
+
+            var response = await _client.PostAsJsonAsync("/api/login", loginViewModel);
+
             return await response.Content.ReadAsAsync<UserViewModel>();
         }
     }

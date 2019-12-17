@@ -19,29 +19,63 @@ namespace CentralDeErros.Api.Test.Controllers
         }
 
         [Fact]
-        public async void Should_return_user_login_information()
+        public async void Should_Get_ErrosList()
         {
-            LoginViewModel loginViewModel = new LoginViewModel
+            var user = await GetAuthorizedUser();
+
+            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", user.AccessToken);
+
+            var response = await _client.GetAsync("/api/errorlog");
+
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+        }
+
+        [Fact]
+        public async void Should_Insert_new_ErrorLog()
+        {
+            var user = await GetAuthorizedUser();
+
+            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", user.AccessToken);
+
+            ErrorLogViewModel errorLog = new ErrorLogViewModel
             {
-                Login = "Admin",
-                Password = "agesune1"
+                Archieved = false,
+                Code = "400",
+                Level = "Warning",
+                Message = "Error Test"
             };
 
-            var response = await _client.PostAsJsonAsync("/api/login", loginViewModel);
+            var response = await _client.PostAsJsonAsync("/api/errorlog", errorLog);
+            ErrorLogViewModel newErrorLog = await response.Content.ReadAsAsync<ErrorLogViewModel>();
+
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+            Assert.NotNull(newErrorLog);
+        }
+
+        [Fact]
+        public async void Should_delete_ErrorLog()
+        {
+            var user = await GetAuthorizedUser();
+
+            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", user.AccessToken);
+
+            ErrorLogViewModel errorLog = new ErrorLogViewModel
+            {
+                Archieved = false,
+                Code = "400",
+                Level = "Warning",
+                Message = "Error Test"
+            };
+
+            var response = await _client.PostAsJsonAsync("/api/errorlog", errorLog);
+            ErrorLogViewModel newErrorLog = await response.Content.ReadAsAsync<ErrorLogViewModel>();
+            response = await _client.DeleteAsync($"/api/errorlog/{newErrorLog.Id}");
 
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
 
-            UserViewModel userAuthorized = await response.Content.ReadAsAsync<UserViewModel>();
+            response = await _client.GetAsync($"/api/errorlog/{newErrorLog.Id}");
 
-            Assert.NotNull(userAuthorized);
-
-            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", userAuthorized.AccessToken);
-
-            response = await _client.GetAsync("/api/errorlog");
-
-            List<UserViewModel> users = await response.Content.ReadAsAsync<List<UserViewModel>>();
-
-            Assert.NotNull(users);
+            Assert.Equal(HttpStatusCode.NoContent, response.StatusCode);
         }
     }
 }

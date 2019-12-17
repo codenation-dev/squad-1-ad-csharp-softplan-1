@@ -40,10 +40,6 @@ namespace CentralDeErros.Api
             Configuration = configuration;
         }
 
-        public Startup()
-        {
-        }
-
         public IConfiguration Configuration { get; }
 
         public virtual void ConfigureServices(IServiceCollection services)
@@ -171,7 +167,7 @@ namespace CentralDeErros.Api
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Central de Erros V1");
-            });
+            });           
         }
     }
 }

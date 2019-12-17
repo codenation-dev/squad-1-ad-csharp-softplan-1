@@ -83,6 +83,24 @@ namespace CentralDeErros.Api.Controllers
         }
 
         /// <summary>
+        /// Retorna um ErroLogViewModel a partir do Id informado
+        /// </summary>
+        /// <returns>Retorna um ErroLogViewModel</returns>
+        /// <response code="200">Retorna o view model do logs de erro</response>        
+        /// <response code="204">Usuário não encontrado</response>  
+        [HttpGet("{id}")]
+        public ActionResult<ErrorLogViewModel> GetById(Guid id)
+        {
+            ErrorLogViewModel errorLog = _errorLogAppService.GetById(id);
+
+            if (errorLog == null)
+            {
+                return NoContent();
+            }
+            return Ok(_errorLogAppService.GetById(id));
+        }
+
+        /// <summary>
         /// Inclusão de um novo log de erro
         /// </summary>
         /// <returns>O log de erro salvo</returns>

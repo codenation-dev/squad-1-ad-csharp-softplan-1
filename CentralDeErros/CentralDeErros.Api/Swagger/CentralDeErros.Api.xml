@@ -32,6 +32,14 @@
             <returns>Uma lista com todos os logs de erro</returns>
             <response code="200">Retorna os view models dos logs de erro</response>        
         </member>
+        <member name="M:CentralDeErros.Api.Controllers.ErrorLogController.GetById(System.Guid)">
+            <summary>
+            Retorna um ErroLogViewModel a partir do Id informado
+            </summary>
+            <returns>Retorna um ErroLogViewModel</returns>
+            <response code="200">Retorna o view model do logs de erro</response>        
+            <response code="204">Usuário não encontrado</response>  
+        </member>
         <member name="M:CentralDeErros.Api.Controllers.ErrorLogController.Post(CentralDeErros.Application.ViewModel.ErrorLogViewModel)">
             <summary>
             Inclusão de um novo log de erro

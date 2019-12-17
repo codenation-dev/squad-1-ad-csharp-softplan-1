@@ -30,7 +30,7 @@ namespace CentralDeErros.Api.Controllers.Base
             return _userAppService.GetById(new Guid(userId));
         }
 
-        private string GenerateJWT(UserViewModel user)
+        protected string GenerateJWT(UserViewModel user)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_appSettings.SecretKeyJWT);

@@ -4,10 +4,12 @@ using CentralDeErros.Application.ViewModel;
 using CentralDeErros.CrossCutting.CustomTypes;
 using GraphQL.Types;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Security.Claims;
 
 namespace CentralDeErros.Api.GraphQL
 {
+    [ExcludeFromCodeCoverage]
     public class CentralDeErrosQuery : ObjectGraphType
     {
         public CentralDeErrosQuery(IErrorLogAppService errorLogAppService)

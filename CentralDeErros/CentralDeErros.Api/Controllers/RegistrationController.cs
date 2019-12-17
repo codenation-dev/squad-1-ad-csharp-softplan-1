@@ -7,13 +7,12 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CentralDeErros.Api.Controllers
 {
-    [AllowAnonymous]
     [Route("api/[controller]")]
     [ApiController]
     public class RegistrationController : BaseController
     {
         private readonly IUserAppService _userAppService;
-        public RegistrationController(IUserAppService userAppService) : base(userAppService)
+        public RegistrationController(IUserAppService userAppService): base(userAppService)
         {
             _userAppService = userAppService;
         }
@@ -26,11 +25,12 @@ namespace CentralDeErros.Api.Controllers
         /// <response code="200">Retorna um view model do usuário que foi cadastrado</response>
         /// <response code="204">Caso o usuário seja nulo, responde com NoContent</response>
         /// <response code="400">Se o usuário passado já estiver cadastrado, resulta num BadRequest</response>
+        [AllowAnonymous]
         [HttpPost()]
-        public ActionResult<UserViewModel> Post(UserViewModel userViewModel)
+        public ActionResult<UserViewModel> Post([FromBody] UserViewModel userViewModel)
         {
             if (userViewModel == null)
-                return NoContent();
+                return BadRequest("Não foi informado um usuário para ser salvo.");
 
             if (userViewModel.Email == null || userViewModel.Login == null || userViewModel.Role == null
                 || userViewModel.Name == null || userViewModel.Password == null)

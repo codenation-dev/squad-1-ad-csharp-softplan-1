@@ -1,7 +1,9 @@
 ﻿using GraphQL.Types;
+using System.Diagnostics.CodeAnalysis;
 
 namespace CentralDeErros.Api.GraphQL.Types
 {
+    [ExcludeFromCodeCoverage]
     public class ErrorLogFilterInputType : InputObjectGraphType
     {
         public ErrorLogFilterInputType()
