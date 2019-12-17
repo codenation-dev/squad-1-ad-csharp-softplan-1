@@ -54,15 +54,15 @@ namespace CentralDeErros.Api.Controllers
 
             if (environment.Count > 0)
             {
-                if (environment.ToString().ToLower() == "Unknown")
+                if (environment.ToString().ToLower() == "unknown")
                     filter.Environment = ServerEnvironment.Unknown;
-                else if (environment.ToString().ToLower() == "Development")
+                else if (environment.ToString().ToLower() == "development")
                     filter.Environment = ServerEnvironment.Development;
-                else if (environment.ToString().ToLower() == "Test")
+                else if (environment.ToString().ToLower() == "test")
                     filter.Environment = ServerEnvironment.Test;
-                else if (environment.ToString().ToLower() == "Acceptance")
+                else if (environment.ToString().ToLower() == "acceptance")
                     filter.Environment = ServerEnvironment.Acceptance;
-                else if (environment.ToString().ToLower() == "Production")
+                else if (environment.ToString().ToLower() == "production")
                     filter.Environment = ServerEnvironment.Production;
                 else
                     return BadRequest("Filtros informados são inválidos!");
