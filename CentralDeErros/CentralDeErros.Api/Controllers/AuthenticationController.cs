@@ -1,4 +1,5 @@
-﻿using CentralDeErros.Application.Interfaces;
+﻿using CentralDeErros.Api.Controllers.Base;
+using CentralDeErros.Application.Interfaces;
 using CentralDeErros.Application.ViewModel;
 using CentralDeErros.Application.ViewModel.Authentication;
 using CentralDeErros.CrossCutting.Helpers;
@@ -20,12 +21,12 @@ namespace CentralDeErros.Api.Controllers
     /// </summary>
     [Route("api/login")]
     [ApiController]
-    public class AuthenticationController : ControllerBase
+    public class AuthenticationController : BaseController
     {
         private readonly AppSettings _appSettings;
         private readonly IUserAppService _userAppService;
 
-        public AuthenticationController(IUserAppService userAppService, IOptions<AppSettings> appSettings)
+        public AuthenticationController(IUserAppService userAppService, IOptions<AppSettings> appSettings): base(userAppService)
         {
             _userAppService = userAppService;
             _appSettings = appSettings.Value;
@@ -42,7 +43,7 @@ namespace CentralDeErros.Api.Controllers
         /// <response code="400">Se o usuário estiver inativo, responde com um BadRequest e a mensagem "Usuário Inativo"</response>
         [AllowAnonymous]
         [HttpPost()]
-        public ActionResult Post(LoginViewModel loginViewModel)
+        public ActionResult<UserViewModel> Post(LoginViewModel loginViewModel)
         {
             var user = _userAppService.Find(p => p.Login == loginViewModel.Login).FirstOrDefault();
 

@@ -7,13 +7,12 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CentralDeErros.Api.Controllers
 {
-    [AllowAnonymous]
     [Route("api/[controller]")]
     [ApiController]
     public class RegistrationController : BaseController
     {
         private readonly IUserAppService _userAppService;
-        public RegistrationController(IUserAppService userAppService) : base(userAppService)
+        public RegistrationController(IUserAppService userAppService): base(userAppService)
         {
             _userAppService = userAppService;
         }
@@ -31,7 +30,7 @@ namespace CentralDeErros.Api.Controllers
         public ActionResult<UserViewModel> Post([FromBody] UserViewModel userViewModel)
         {
             if (userViewModel == null)
-                return NoContent();
+                return BadRequest("Não foi informado um usuário para ser salvo.");
 
             if (userViewModel.Email == null || userViewModel.Login == null || userViewModel.Role == null
                 || userViewModel.Name == null || userViewModel.Password == null)

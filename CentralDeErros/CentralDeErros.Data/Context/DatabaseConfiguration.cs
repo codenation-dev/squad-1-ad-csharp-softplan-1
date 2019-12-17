@@ -44,7 +44,7 @@ namespace CentralDeErros.Data.Context
             return databaseType == DatabaseType.Unknow ? Environment.GetEnvironmentVariable(ConfigurationConst.DatabaseType).ToDatabaseType() : databaseType;
         }
 
-        private string GetConnectionString(DatabaseType databaseType = DatabaseType.LocalDB)
+        public string GetConnectionString(DatabaseType databaseType = DatabaseType.LocalDB)
         {
             if (databaseType == DatabaseType.LocalDB)
             {
