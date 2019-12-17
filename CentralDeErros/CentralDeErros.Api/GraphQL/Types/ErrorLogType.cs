@@ -14,6 +14,7 @@ namespace CentralDeErros.Api.GraphQL.Types
             Field(e => e.Code).Description("Código de erro.");
             Field(e => e.Message).Description("Mensagem do erro.");
             Field(e => e.Level).Description("Level do erro.");
+            Field(e => e.Origin).Description("Origem do erro.");
             Field(e => e.Archieved).Description("Indica se o log de erro está arquivado.");
             Field<EnvironmentType>("Environment", resolve: e => e.Source.Environment);
         }

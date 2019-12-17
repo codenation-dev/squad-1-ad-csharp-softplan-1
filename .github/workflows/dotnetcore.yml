@@ -1,0 +1,25 @@
+name: .NET Core
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.0.100
+    - name: Build with dotnet
+      run: dotnet build ./CentralDeErros/CentralDeErros.sln
+    - name: Unit test - Domain
+      run: dotnet test ./CentralDeErros/CentralDeErros.Domain.Test/CentralDeErros.Domain.Test.csproj /p:CollectCoverage=true
+    - name: Unit test - CrossCutting
+      run: dotnet test ./CentralDeErros/CentralDeErros.CrossCutting.Test/CentralDeErros.CrossCutting.Test.csproj /p:CollectCoverage=true
+    - name: Unit test - Data
+      run: dotnet test ./CentralDeErros/CentralDeErros.Data.Test/CentralDeErros.Data.Test.csproj /p:CollectCoverage=true
+    - name: Unit test - Api
+      run: dotnet test ./CentralDeErros/CentralDeErros.Api.Test/CentralDeErros.Api.Test.csproj /p:CollectCoverage=true
